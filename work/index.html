@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Selected Case Studies — Oryktos</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,17 +15,19 @@
     .page-header {
       background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
       color: #fff;
-      padding: 100px 24px 80px;
+      padding: 80px 20px 60px;
       text-align: center;
       border-bottom: 1px solid var(--border-dark);
+      width: 100%;
     }
     .grid {
       max-width: 1200px;
-      margin: 60px auto 100px;
-      padding: 0 24px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
     }
     .case-card {
       background: #fff;
@@ -36,18 +38,18 @@
       flex-direction: column;
     }
     .card-preview {
-      height: 180px;
+      height: 160px;
       background: var(--pine-surface);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--sand-dim);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.05em;
     }
     .card-body {
-      padding: 30px;
+      padding: 24px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -59,10 +61,13 @@
       color: var(--pine-deep);
       padding: 6px 12px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       margin-top: 14px;
       width: fit-content;
+    }
+    @media (max-width: 600px) {
+      .page-header h1 { font-size: 32px !important; }
     }
   </style>
 </head>
@@ -82,13 +87,39 @@
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </nav>
-      <a href="/contact/" class="btn-primary">Initiate Project →</a>
+      <a href="/contact/" class="btn-primary desktop-only-cta">Initiate Project →</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-header">
+        <div class="brand-title">Oryktos<span>.</span></div>
+        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="/" onclick="toggleMobileMenu()">Overview</a>
+        <a href="/services/" onclick="toggleMobileMenu()">Services</a>
+        <a href="/work/" class="active" onclick="toggleMobileMenu()">Case Studies</a>
+        <a href="/about/" onclick="toggleMobileMenu()">About</a>
+        <a href="/contact/" onclick="toggleMobileMenu()">Contact</a>
+      </nav>
+    </div>
+    <div class="drawer-footer">
+      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
+    </div>
+  </aside>
+
   <div class="page-header">
-    <h1 style="font-size:44px; margin-bottom:12px;">Engineering Case Studies</h1>
-    <p style="color:#8fa59f; font-size:17px; max-width:600px; margin:0 auto;">Verified client impact across high-load applications and acquisition campaigns.</p>
+    <h1 style="font-size:42px; margin-bottom:12px;">Engineering Case Studies</h1>
+    <p style="color:#8fa59f; font-size:16px; max-width:600px; margin:0 auto;">Verified client impact across high-load applications and acquisition campaigns.</p>
   </div>
 
   <div class="grid">
@@ -96,8 +127,8 @@
       <div class="card-preview mono-font">01 / VANGUARD LOGISTICS</div>
       <div class="card-body">
         <div>
-          <h3 style="font-size:22px; margin-bottom:8px;">Decoupled Freight Management Engine</h3>
-          <p style="color:var(--text-muted); font-size:14px;">Replaced a legacy slow PHP setup with headless Next.js & Go microservices. Accelerated load times from 4.8s to 0.4s.</p>
+          <h3 style="font-size:20px; margin-bottom:8px;">Decoupled Freight Management Engine</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Replaced legacy slow PHP setup with headless Next.js & Go microservices. Accelerated load times from 4.8s to 0.4s.</p>
         </div>
         <div class="metric-badge mono-font">+310% Conversion Uplift</div>
       </div>
@@ -107,7 +138,7 @@
       <div class="card-preview mono-font">02 / AURA DERMATOLOGY</div>
       <div class="card-body">
         <div>
-          <h3 style="font-size:22px; margin-bottom:8px;">Direct-to-Patient Booking Ecosystem</h3>
+          <h3 style="font-size:20px; margin-bottom:8px;">Direct-to-Patient Booking Ecosystem</h3>
           <p style="color:var(--text-muted); font-size:14px;">Configured full-funnel Meta Ads CAPI server tracking and an appointment booking engine with zero drop-off.</p>
         </div>
         <div class="metric-badge mono-font">4.2x ROAS on Meta Spend</div>
@@ -118,7 +149,7 @@
       <div class="card-preview mono-font">03 / MUCHAAN RESORTS</div>
       <div class="card-body">
         <div>
-          <h3 style="font-size:22px; margin-bottom:8px;">Boutique Luxury Hospitality Experience</h3>
+          <h3 style="font-size:20px; margin-bottom:8px;">Boutique Luxury Hospitality Experience</h3>
           <p style="color:var(--text-muted); font-size:14px;">Custom high-contrast editorial responsive theme combining regional aesthetic textures with instantaneous booking checkout.</p>
         </div>
         <div class="metric-badge mono-font">100/100 Core Web Vitals</div>
