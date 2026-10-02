@@ -51,3 +51,21 @@ function toggleMobileMenu() {
     document.body.style.overflow = 'hidden';
   }
 }
+
+// Clean Mobile Menu Toggle
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (!menu || !btn) return;
+
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) {
+    menu.classList.remove('open');
+    btn.classList.remove('is-open');
+    document.body.style.overflow = '';
+  } else {
+    menu.classList.add('open');
+    btn.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
