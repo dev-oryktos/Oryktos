@@ -4,113 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Initiate Scoping — Oryktos</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="/style.css">
-  
   <style>
-    .page-header {
-      background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
-      color: #fff;
-      padding: 80px 20px 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border-dark);
-      width: 100%;
-    }
-    .form-wrap {
-      max-width: 680px;
-      margin: -30px auto 80px;
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 34px 24px;
-      box-shadow: 0 10px 40px rgba(11, 40, 34, 0.05);
-      position: relative;
-      z-index: 10;
-      width: calc(100% - 40px);
-    }
-    .field-group {
-      margin-bottom: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--pine-deep);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    input, select, textarea {
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(11, 40, 34, 0.15);
-      background: var(--bg-stone);
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--pine-deep);
-      outline: none;
-      width: 100%;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--pine-surface);
-      background: #fff;
-    }
-    @media (max-width: 600px) {
-      .page-header h1 { font-size: 32px !important; }
-      .form-wrap { margin-top: -20px; padding: 24px 18px; }
-    }
+    .page-header { background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%); color: #fff; padding: 80px 20px 60px; text-align: center; border-bottom: 1px solid var(--border-dark); }
+    .form-wrap { max-width: 680px; margin: -30px auto 80px; background: #ffffff; border: 1px solid var(--border-light); border-radius: 20px; padding: 34px 24px; box-shadow: 0 10px 40px rgba(11, 40, 34, 0.05); position: relative; z-index: 10; width: calc(100% - 40px); }
+    .field-group { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
+    label { font-size: 12px; font-weight: 700; color: var(--pine-deep); text-transform: uppercase; letter-spacing: 0.05em; }
+    input, select, textarea { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(11, 40, 34, 0.15); background: var(--bg-stone); font-family: var(--font-body); font-size: 14px; color: var(--pine-deep); outline: none; width: 100%; }
+    input:focus, select:focus, textarea:focus { border-color: var(--pine-surface); background: #fff; }
+    @media (max-width: 600px) { .page-header h1 { font-size: 32px !important; } .form-wrap { margin-top: -20px; padding: 24px 18px; } }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- UNIVERSAL HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
         <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
-        <span class="brand-title">Oryktos<span>.</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="desktop-nav">
         <a href="/">Overview</a>
         <a href="/services/">Services</a>
         <a href="/work/">Case Studies</a>
         <a href="/about/">About</a>
         <a href="/contact/" class="active">Contact</a>
       </nav>
-      <a href="/contact/" class="btn-primary desktop-only-cta">Initiate Project →</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+      <a href="/contact/" class="nav-cta-btn desktop-cta">Initiate Project →</a>
+      <button class="mobile-toggle" id="mobileMenuBtn" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
-  <aside class="mobile-drawer" id="mobileDrawer">
-    <div>
-      <div class="drawer-header">
-        <div class="brand-title">Oryktos<span>.</span></div>
-        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="/" onclick="toggleMobileMenu()">Overview</a>
-        <a href="/services/" onclick="toggleMobileMenu()">Services</a>
-        <a href="/work/" onclick="toggleMobileMenu()">Case Studies</a>
-        <a href="/about/" onclick="toggleMobileMenu()">About</a>
-        <a href="/contact/" class="active" onclick="toggleMobileMenu()">Contact</a>
-      </nav>
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <nav class="mobile-links">
+      <a href="/" onclick="toggleMenu()">Overview</a>
+      <a href="/services/" onclick="toggleMenu()">Services</a>
+      <a href="/work/" onclick="toggleMenu()">Case Studies</a>
+      <a href="/about/" onclick="toggleMenu()">About</a>
+      <a href="/contact/" class="active" onclick="toggleMenu()">Contact</a>
+    </nav>
+    <div class="mobile-footer-actions">
+      <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
+      <div class="mono-font" style="font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">LATENCY: 0.04ms // ALL SYSTEMS NOMINAL</div>
     </div>
-    <div class="drawer-footer">
-      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
-    </div>
-  </aside>
+  </div>
 
   <div class="page-header">
     <h1 style="font-size:42px; margin-bottom:12px;">Initiate Project Scoping</h1>
@@ -138,18 +78,8 @@
         <select name="service" required>
           <option value="headless-web">Headless Web & Next.js Architecture</option>
           <option value="mobile-apps">Flutter / Cross-Platform Mobile</option>
-          <option value="paid-media">Performance Meta & Google Ads / CAPI</option>
-          <option value="ui-systems">Design System / Figma Tokens</option>
+          <option value="paid-media">Performance Meta & Google Ads Tracking</option>
           <option value="full-audit">Complete Technical & Growth Audit</option>
-        </select>
-      </div>
-
-      <div class="field-group">
-        <label>Estimated Monthly Budget</label>
-        <select name="budget">
-          <option value="1k-2.5k">$1,000 – $2,500</option>
-          <option value="2.5k-5k">$2,500 – $5,000</option>
-          <option value="5k-plus">$5,000+ (Enterprise)</option>
         </select>
       </div>
 
@@ -158,20 +88,18 @@
         <textarea name="details" rows="4" placeholder="Briefly describe your current bottlenecks and goals..."></textarea>
       </div>
 
-      <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:15px; margin-top:8px;">
+      <button type="submit" class="nav-cta-btn" style="width:100%; padding:15px; margin-top:8px;">
         Submit Architecture Brief →
       </button>
     </form>
   </div>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-grid">
         <div>
           <div class="footer-brand-wrap">
             <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
-            <div class="brand-title" style="font-size:22px;">Oryktos<span>.</span></div>
           </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
@@ -200,7 +128,6 @@
       </div>
       <div class="footer-bottom">
         <div>© 2026 Oryktos Agency. All rights reserved.</div>
-        <div class="mono-font" style="color:var(--accent-mint);">READY FOR NETLIFY FORMS</div>
       </div>
     </div>
   </footer>
