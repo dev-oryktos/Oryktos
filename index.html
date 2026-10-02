@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oryktos — Digital Strategy, Engineering & Systems</title>
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -13,27 +12,14 @@
   <link rel="stylesheet" href="/style.css">
   
   <style>
-    /* PAGE SPECIFIC REFINEMENTS */
-    :root {
-      --hero-bg: #061814;
-      --hero-surface: #0b2822;
-      --card-stone: #ffffff;
-      --stone-border: rgba(11, 40, 34, 0.08);
-      --sand-highlight: #e8dfc8;
-      --accent-mint: #2be4a7;
-    }
-
-    /* HERO AREA */
     .hero {
-      background: radial-gradient(circle at 50% 0%, #0d352d 0%, var(--hero-bg) 65%);
+      background: radial-gradient(circle at 50% 0%, #0d352d 0%, var(--pine-deep) 65%);
       color: #fff;
       padding: 130px 24px 140px;
       text-align: center;
       position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(232, 223, 200, 0.1);
+      border-bottom: 1px solid var(--border-dark);
     }
-
     .hero::before {
       content: '';
       position: absolute;
@@ -44,14 +30,12 @@
       background-size: 64px 64px;
       pointer-events: none;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       max-width: 960px;
       margin: 0 auto;
     }
-
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -60,15 +44,13 @@
       border: 1px solid rgba(232, 223, 200, 0.22);
       padding: 7px 18px;
       border-radius: 999px;
-      color: var(--sand-highlight);
+      color: var(--sand-dim);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 28px;
-      backdrop-filter: blur(8px);
     }
-
     .badge-pulse {
       width: 7px;
       height: 7px;
@@ -78,40 +60,25 @@
       animation: pulseDot 2s infinite ease-in-out;
     }
     @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-
     .hero h1 {
-      font-size: clamp(42px, 6.4vw, 76px);
+      font-size: clamp(40px, 6vw, 76px);
       font-weight: 800;
       line-height: 1.05;
-      letter-spacing: -0.04em;
       margin: 0 auto 24px;
       color: #faf8f5;
     }
-
     .hero h1 em {
       font-style: normal;
-      color: var(--sand-highlight);
+      color: var(--sand-dim);
       position: relative;
     }
-
-    .hero h1 em::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; bottom: 8px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-mint), transparent);
-      border-radius: 2px;
-    }
-
     .hero p {
       color: #8fa59f;
       font-size: clamp(17px, 2vw, 20px);
       max-width: 680px;
       margin: 0 auto 40px;
       line-height: 1.6;
-      font-weight: 400;
     }
-
     .hero-actions {
       display: flex;
       gap: 16px;
@@ -119,8 +86,6 @@
       flex-wrap: wrap;
       margin-bottom: 50px;
     }
-
-    /* PROOF STRIP */
     .proof-strip {
       display: flex;
       justify-content: center;
@@ -130,18 +95,16 @@
       padding-top: 36px;
       border-top: 1px solid rgba(232, 223, 200, 0.08);
     }
-
     .proof-item {
       display: flex;
       align-items: baseline;
       gap: 8px;
     }
-
     .proof-num {
       font-family: var(--font-heading);
       font-size: 26px;
       font-weight: 800;
-      color: var(--sand-highlight);
+      color: var(--sand-dim);
     }
     .proof-num span { color: var(--accent-mint); }
     .proof-label {
@@ -149,84 +112,76 @@
       color: #728b84;
       font-weight: 500;
     }
-
-    /* BENTO CAPABILITIES */
     .section-wrap {
       max-width: 1240px;
       margin: 0 auto;
       padding: 100px 24px;
     }
-
     .section-heading-center {
       text-align: center;
       max-width: 680px;
       margin: 0 auto 60px;
     }
-
     .eyebrow {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--hero-surface);
+      color: var(--pine-surface);
       margin-bottom: 12px;
     }
-
     .section-title {
       font-size: clamp(32px, 4vw, 46px);
-      color: var(--hero-bg);
+      color: var(--pine-deep);
       line-height: 1.15;
       margin-bottom: 16px;
     }
-
     .section-desc {
       color: var(--text-muted);
       font-size: 16px;
       line-height: 1.6;
     }
-
     .bento-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 24px;
     }
-
     .bento-card {
-      background: var(--card-stone);
-      border: 1px solid var(--stone-border);
+      background: #ffffff;
+      border: 1px solid var(--border-light);
       border-radius: 24px;
       padding: 44px;
       box-shadow: 0 10px 35px rgba(6, 24, 20, 0.03);
-      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s ease;
     }
-
-    .bento-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 45px rgba(6, 24, 20, 0.06);
-    }
-
+    .bento-card:hover { transform: translateY(-3px); }
     .bento-card.dark {
-      background: var(--hero-surface);
+      background: var(--pine-surface);
       border-color: rgba(232, 223, 200, 0.12);
-      color: var(--sand-highlight);
+      color: var(--sand-dim);
     }
-
-    .bento-card.span-full {
-      grid-column: 1 / -1;
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .tag {
+      background: var(--bg-sand);
+      color: var(--pine-deep);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
     }
-
-    /* COMPARISON MATRIX SECTION (VALUE BUILDER) */
+    .tag.dark {
+      background: var(--pine-card);
+      color: var(--sand-dim);
+    }
     .comparison-section {
       background: #f2eee3;
       padding: 90px 24px;
-      border-top: 1px solid var(--stone-border);
-      border-bottom: 1px solid var(--stone-border);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
     }
-
     .comp-table {
       width: 100%;
       max-width: 1040px;
@@ -238,73 +193,25 @@
       border: 1px solid rgba(11, 40, 34, 0.08);
       box-shadow: 0 8px 30px rgba(11, 40, 34, 0.04);
     }
-
     .comp-table th, .comp-table td {
       padding: 20px 28px;
       text-align: left;
       font-size: 14px;
     }
-
     .comp-table th {
-      background: var(--hero-bg);
-      color: var(--sand-highlight);
+      background: var(--pine-deep);
+      color: var(--sand-dim);
       font-family: var(--font-heading);
-      letter-spacing: -0.01em;
       font-size: 15px;
     }
-
-    .comp-table th:last-child {
-      color: var(--accent-mint);
-    }
-
-    .comp-table tr {
-      border-bottom: 1px solid rgba(11, 40, 34, 0.06);
-    }
-
+    .comp-table th:last-child { color: var(--accent-mint); }
+    .comp-table tr { border-bottom: 1px solid rgba(11, 40, 34, 0.06); }
     .comp-table tr:last-child { border-bottom: none; }
-    .comp-table td:first-child { font-weight: 600; color: var(--hero-bg); }
+    .comp-table td:first-child { font-weight: 600; color: var(--pine-deep); }
     .comp-table td:nth-child(2) { color: #8a9693; }
     .comp-table td:last-child { font-weight: 600; color: #0d4237; background: rgba(43, 228, 167, 0.04); }
-
-    /* PROCESS TIMELINE */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 50px;
-    }
-
-    .timeline-step {
-      background: #ffffff;
-      border: 1px solid var(--stone-border);
-      border-radius: 18px;
-      padding: 32px 24px;
-      position: relative;
-    }
-
-    .timeline-step .num {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--hero-surface);
-      opacity: 0.15;
-      margin-bottom: 14px;
-    }
-
-    .timeline-step h4 {
-      font-size: 17px;
-      color: var(--hero-bg);
-      margin-bottom: 8px;
-    }
-
-    .timeline-step p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ON-PAGE LEAD CAPTURE / SCOPING HUD */
     .landing-cta {
-      background: var(--hero-bg);
+      background: var(--pine-deep);
       border-radius: 30px;
       padding: 70px 48px;
       color: #fff;
@@ -312,21 +219,9 @@
       grid-template-columns: 1fr 1fr;
       gap: 50px;
       align-items: center;
-      position: relative;
-      overflow: hidden;
     }
-
-    .landing-cta::before {
-      content: '';
-      position: absolute;
-      top: -100px; left: -100px;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(43, 228, 167, 0.12), transparent 70%);
-      pointer-events: none;
-    }
-
     .cta-form {
-      background: var(--hero-surface);
+      background: var(--pine-surface);
       border: 1px solid rgba(232, 223, 200, 0.14);
       border-radius: 20px;
       padding: 32px;
@@ -334,7 +229,6 @@
       flex-direction: column;
       gap: 16px;
     }
-
     .cta-input, .cta-select {
       width: 100%;
       background: rgba(6, 24, 20, 0.85);
@@ -344,36 +238,23 @@
       color: #faf8f5;
       font-size: 14px;
       outline: none;
-      transition: border-color 0.2s;
     }
-
-    .cta-input:focus, .cta-select:focus {
-      border-color: var(--accent-mint);
-    }
-
+    .cta-input:focus, .cta-select:focus { border-color: var(--accent-mint); }
     @media (max-width: 900px) {
       .bento-grid { grid-template-columns: 1fr; }
-      .timeline-grid { grid-template-columns: 1fr 1fr; }
       .landing-cta { grid-template-columns: 1fr; padding: 48px 24px; }
       .comp-table th, .comp-table td { padding: 14px 16px; font-size: 13px; }
-    }
-    @media (max-width: 600px) {
-      .timeline-grid { grid-template-columns: 1fr; }
       .proof-strip { gap: 20px; flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- FIXED STICKY NAVIGATION -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
-        <svg class="brand-cube" width="32" height="32" style="width:32px; height:32px; flex-shrink:0;" viewBox="0 0 100 100">
-          <polygon points="50,5 95,28 50,52 5,28" fill="#e8dfc8"/>
-          <polygon points="5,28 50,52 50,98 5,74" fill="#0b2822"/>
-          <polygon points="95,28 50,52 50,98 95,74" fill="#061814"/>
-        </svg>
+        <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
         <span class="brand-title">Oryktos<span>.</span></span>
       </a>
       <nav class="nav-links">
@@ -387,28 +268,19 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge mono-font">
         <span class="badge-pulse"></span>
         Digital Engineering & Conversion Studio
       </div>
-      
       <h1>Bespoke Systems Built for <em>Speed, Scale & Ergonomics.</em></h1>
-      
       <p>From sub-second headless web architectures to precision ad acquisition funnels, we turn complex digital bottlenecks into unfair competitive advantages.</p>
-      
       <div class="hero-actions">
-        <a href="#quick-audit" class="btn-primary" style="padding:15px 32px; font-size:15px;">
-          Schedule Architecture Audit →
-        </a>
-        <a href="/work/" class="btn-secondary" style="padding:15px 32px; font-size:15px;">
-          Explore Proven Case Studies
-        </a>
+        <a href="#quick-audit" class="btn-primary" style="padding:15px 32px; font-size:15px;">Schedule Architecture Audit →</a>
+        <a href="/work/" class="btn-secondary" style="padding:15px 32px; font-size:15px;">Explore Proven Case Studies</a>
       </div>
-
-      <!-- LIVE PROOF STATS -->
       <div class="proof-strip">
         <div class="proof-item">
           <div class="proof-num">0.4<span>s</span></div>
@@ -430,7 +302,7 @@
     </div>
   </section>
 
-  <!-- CAPABILITIES / BENTO ARCHITECTURE -->
+  <!-- CAPABILITIES -->
   <section class="section-wrap">
     <div class="section-heading-center">
       <div class="eyebrow mono-font">Core Engineering Architecture</div>
@@ -439,14 +311,13 @@
     </div>
 
     <div class="bento-grid">
-      <!-- BENTO 01 -->
       <div class="bento-card">
         <div>
           <span class="mono-font" style="font-size:12px; font-weight:700; color:var(--text-muted);">MODULE_01</span>
-          <h3 style="font-size:26px; margin:10px 0 14px; color:var(--hero-bg);">Headless Web & Static API Frontends</h3>
+          <h3 style="font-size:26px; margin:10px 0 14px; color:var(--pine-deep);">Headless Web & Static API Frontends</h3>
           <p style="color:var(--text-muted); font-size:15px;">Ultra-fast Next.js and custom Astro frontends decoupled from headless WordPress or custom APIs. Zero page bloat, instant transitions, and near-zero server overhead.</p>
         </div>
-        <div class="tag-row" style="margin-top:24px;">
+        <div class="tag-row">
           <span class="tag">Next.js 15</span>
           <span class="tag">Headless WordPress</span>
           <span class="tag">GraphQL</span>
@@ -455,13 +326,9 @@
         </div>
       </div>
 
-      <!-- BENTO 02 (INTERACTIVE BENCHMARK RUNNER) -->
       <div class="bento-card dark">
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span class="mono-font" style="font-size:12px; font-weight:700; color:var(--accent-mint);">TELEMETRY_SUITE</span>
-            <span class="mono-font" style="font-size:11px; color:#8fa59f;">STATUS: VERIFIED</span>
-          </div>
+          <span class="mono-font" style="font-size:12px; font-weight:700; color:var(--accent-mint);">TELEMETRY_SUITE</span>
           <h3 style="font-size:24px; margin:12px 0 8px;">Edge Speed Benchmark</h3>
           <p style="font-size:13px; color:#8fa59f; margin-bottom:16px;">Test simulated server-side delivery vs traditional shared hosting.</p>
           <div id="terminal-log" class="mono-font" style="background:#061814; padding:16px; border-radius:12px; font-size:12px; min-height:120px; border:1px solid rgba(232,223,200,0.12); color:#faf8f5; white-space:pre-wrap; line-height:1.5;">// Press below to initiate real-time synthetic latency check...</div>
@@ -471,28 +338,26 @@
         </button>
       </div>
 
-      <!-- BENTO 03 -->
       <div class="bento-card dark">
         <div>
           <span class="mono-font" style="font-size:12px; font-weight:700; color:var(--accent-mint);">GROWTH_PIPELINE</span>
           <h3 style="font-size:24px; margin:12px 0 8px;">Server-Side Ad Telemetry & Tracking</h3>
           <p style="color:#8fa59f; font-size:14px;">Bypass iOS tracking blindspots and browser ad blockers. Complete Meta Conversions API (CAPI) and server Google Tag Manager implementation to deliver precise conversion attribution.</p>
         </div>
-        <div class="tag-row" style="margin-top:20px;">
+        <div class="tag-row">
           <span class="tag dark">Meta CAPI</span>
           <span class="tag dark">GTM Server-Side</span>
           <span class="tag dark">GA4 Multi-Channel</span>
         </div>
       </div>
 
-      <!-- BENTO 04 -->
       <div class="bento-card">
         <div>
           <span class="mono-font" style="font-size:12px; font-weight:700; color:var(--text-muted);">CROSS_PLATFORM</span>
-          <h3 style="font-size:24px; margin:12px 0 8px; color:var(--hero-bg);">Mobile Applications (Flutter)</h3>
+          <h3 style="font-size:24px; margin:12px 0 8px; color:var(--pine-deep);">Mobile Applications (Flutter)</h3>
           <p style="color:var(--text-muted); font-size:14px;">Single-source-of-truth Flutter codebases powering fluid iOS and Android mobile experiences. Real-time Firebase database architecture and offline synchronisation.</p>
         </div>
-        <div class="tag-row" style="margin-top:20px;">
+        <div class="tag-row">
           <span class="tag">Flutter</span>
           <span class="tag">Dart</span>
           <span class="tag">Firebase</span>
@@ -502,7 +367,7 @@
     </div>
   </section>
 
-  <!-- COMPARISON TABLE SECTION (CONVERSION BOOSTER) -->
+  <!-- COMPARISON TABLE -->
   <section class="comparison-section">
     <div class="section-heading-center" style="margin-bottom:20px;">
       <div class="eyebrow mono-font">Direct Technical Contrast</div>
@@ -543,73 +408,33 @@
     </table>
   </section>
 
-  <!-- SIMPLE 4-PHASE ROADMAP -->
-  <section class="section-wrap">
-    <div class="section-heading-center">
-      <div class="eyebrow mono-font">The Delivery Protocol</div>
-      <h2 class="section-title">Transparent 4-Phase Sprint</h2>
-      <p class="section-desc">No agency fog or endless meetings. Clean, predictable sprints directly led by engineers.</p>
-    </div>
-
-    <div class="timeline-grid">
-      <div class="timeline-step">
-        <div class="num mono-font">01</div>
-        <h4>Technical Diagnostic</h4>
-        <p>Full audit of code speed, Core Web Vitals, conversion leaks, and tracking infrastructure.</p>
-      </div>
-
-      <div class="timeline-step">
-        <div class="num mono-font">02</div>
-        <h4>Architecture Blueprint</h4>
-        <p>Design token mapping in Figma alongside headless database and API schematics.</p>
-      </div>
-
-      <div class="timeline-step">
-        <div class="num mono-font">03</div>
-        <h4>Engineering & Relay</h4>
-        <p>Next.js build, Flutter components, server-side CAPI containers, and continuous deployment.</p>
-      </div>
-
-      <div class="timeline-step">
-        <div class="num mono-font">04</div>
-        <h4>Scale & Calibrate</h4>
-        <p>Real-time ROAS calibration, speed regression tests, and weekly metric reporting.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ON-PAGE LANDING LEAD CAPTURE (NETLIFY POWERED) -->
-  <section class="section-wrap" id="quick-audit" style="padding-top:0;">
+  <!-- ON-PAGE SCOPING (NETLIFY FORM) -->
+  <section class="section-wrap" id="quick-audit" style="padding-top:40px;">
     <div class="landing-cta">
       <div>
         <div class="mono-font" style="font-size:12px; color:var(--accent-mint); font-weight:700; margin-bottom:12px;">DIRECT INQUIRY</div>
         <h2 style="font-size:clamp(32px, 3.5vw, 44px); line-height:1.15; margin-bottom:16px;">Ready to initiate your architecture sprint?</h2>
         <p style="color:#8fa59f; font-size:16px; line-height:1.6; margin-bottom:28px;">Direct access to technical leads. We evaluate your current platform and provide actionable architectural recommendations within 24 hours.</p>
-        
-        <div style="display:flex; flex-direction:column; gap:12px; font-size:14px; color:var(--sand-highlight);">
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:14px; color:var(--sand-dim);">
           <div>✓ Direct review by founders & technical architects</div>
           <div>✓ Non-disclosure guaranteed (NDA standard)</div>
           <div>✓ Zero sales pressure or generic slide decks</div>
         </div>
       </div>
 
-      <!-- Netlify Form -->
       <form class="cta-form" name="homepage-audit" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="homepage-audit">
         <p style="display:none;"><input name="bot-field"></p>
-
         <div>
-          <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sand-highlight); display:block; margin-bottom:6px;">Your Name</label>
+          <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sand-dim); display:block; margin-bottom:6px;">Your Name</label>
           <input type="text" name="name" class="cta-input" required placeholder="Alexander Vance">
         </div>
-
         <div>
-          <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sand-highlight); display:block; margin-bottom:6px;">Work Email</label>
+          <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sand-dim); display:block; margin-bottom:6px;">Work Email</label>
           <input type="email" name="email" class="cta-input" required placeholder="alex@company.com">
         </div>
-
         <div>
-          <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sand-highlight); display:block; margin-bottom:6px;">Primary Requirement</label>
+          <label style="font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sand-dim); display:block; margin-bottom:6px;">Primary Requirement</label>
           <select name="service" class="cta-select">
             <option value="headless-web">Headless Web / Next.js Rebuild</option>
             <option value="mobile-app">Cross-Platform Flutter Mobile</option>
@@ -617,7 +442,6 @@
             <option value="performance-audit">Comprehensive Performance Audit</option>
           </select>
         </div>
-
         <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:15px; font-size:15px; margin-top:8px;">
           Submit Scoping Request →
         </button>
@@ -625,12 +449,15 @@
     </div>
   </section>
 
-  <!-- ARCHITECTURAL FOOTER -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-grid">
         <div>
-          <div class="brand-title" style="font-size:24px;">Oryktos<span>.</span></div>
+          <div class="footer-brand-wrap">
+            <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
+            <div class="brand-title" style="font-size:22px;">Oryktos<span>.</span></div>
+          </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
         <div class="footer-col">
