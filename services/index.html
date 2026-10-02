@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Capabilities & Services — Oryktos</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,25 +15,27 @@
     .page-header {
       background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
       color: #fff;
-      padding: 100px 24px 80px;
+      padding: 80px 20px 60px;
       text-align: center;
       border-bottom: 1px solid var(--border-dark);
+      width: 100%;
     }
     .content-wrap {
       max-width: 1100px;
-      margin: 60px auto 100px;
-      padding: 0 24px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      width: 100%;
     }
     .service-row {
       display: grid;
       grid-template-columns: 1fr 2fr;
-      gap: 40px;
-      padding: 48px 0;
+      gap: 36px;
+      padding: 40px 0;
       border-bottom: 1px solid var(--border-light);
     }
     .service-row:last-child { border-bottom: none; }
     .badge {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--accent-mint);
       background: var(--pine-surface);
@@ -43,7 +45,8 @@
       margin-bottom: 8px;
     }
     @media (max-width: 768px) {
-      .service-row { grid-template-columns: 1fr; gap: 20px; }
+      .service-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
+      .page-header h1 { font-size: 32px !important; }
     }
   </style>
 </head>
@@ -63,24 +66,50 @@
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </nav>
-      <a href="/contact/" class="btn-primary">Initiate Project →</a>
+      <a href="/contact/" class="btn-primary desktop-only-cta">Initiate Project →</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-header">
+        <div class="brand-title">Oryktos<span>.</span></div>
+        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="/" onclick="toggleMobileMenu()">Overview</a>
+        <a href="/services/" class="active" onclick="toggleMobileMenu()">Services</a>
+        <a href="/work/" onclick="toggleMobileMenu()">Case Studies</a>
+        <a href="/about/" onclick="toggleMobileMenu()">About</a>
+        <a href="/contact/" onclick="toggleMobileMenu()">Contact</a>
+      </nav>
+    </div>
+    <div class="drawer-footer">
+      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
+    </div>
+  </aside>
+
   <div class="page-header">
-    <h1 style="font-size:44px; margin-bottom:12px;">Engineering & Growth Services</h1>
-    <p style="color:#8fa59f; font-size:17px; max-width:600px; margin:0 auto;">From code design to ad telemetry, we deliver end-to-end technical execution.</p>
+    <h1 style="font-size:42px; margin-bottom:12px;">Engineering & Growth Services</h1>
+    <p style="color:#8fa59f; font-size:16px; max-width:600px; margin:0 auto;">From code design to ad telemetry, we deliver end-to-end technical execution.</p>
   </div>
 
   <div class="content-wrap">
     <div class="service-row">
       <div>
         <div class="badge mono-font">PILLAR 01</div>
-        <h2 style="font-size:26px;">Decoupled Web Architecture</h2>
+        <h2 style="font-size:24px;">Decoupled Web Architecture</h2>
       </div>
       <div>
-        <p style="color:var(--text-muted); font-size:16px; margin-bottom:14px;">We replace heavy, slow WordPress installations with lightweight headless frameworks. Content teams manage content in familiar interfaces while users experience instant, CDN-cached frontends.</p>
-        <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px;">
+        <p style="color:var(--text-muted); font-size:15px; margin-bottom:14px;">We replace heavy, slow WordPress installations with lightweight headless frameworks. Content teams manage content in familiar interfaces while users experience instant, CDN-cached frontends.</p>
+        <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px; font-size:14px;">
           <li>Next.js / Astro static & edge site generation</li>
           <li>Custom WordPress REST / GraphQL API endpoints</li>
           <li>Sub-50ms TTFB global Cloudflare CDN routing</li>
@@ -91,11 +120,11 @@
     <div class="service-row">
       <div>
         <div class="badge mono-font">PILLAR 02</div>
-        <h2 style="font-size:26px;">Mobile App Development</h2>
+        <h2 style="font-size:24px;">Mobile App Development</h2>
       </div>
       <div>
-        <p style="color:var(--text-muted); font-size:16px; margin-bottom:14px;">Clean-architecture Flutter applications engineered to perform natively across iOS and Android from a single source of truth.</p>
-        <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px;">
+        <p style="color:var(--text-muted); font-size:15px; margin-bottom:14px;">Clean-architecture Flutter applications engineered to perform natively across iOS and Android from a single source of truth.</p>
+        <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px; font-size:14px;">
           <li>State management via Bloc / Riverpod</li>
           <li>Real-time Firebase Cloud Firestore sync</li>
           <li>Native device integration & background push notifications</li>
@@ -106,11 +135,11 @@
     <div class="service-row">
       <div>
         <div class="badge mono-font">PILLAR 03</div>
-        <h2 style="font-size:26px;">Paid Media & Server Tracking</h2>
+        <h2 style="font-size:24px;">Paid Media & Server Tracking</h2>
       </div>
       <div>
-        <p style="color:var(--text-muted); font-size:16px; margin-bottom:14px;">Ensure full attribution for your advertising spend without signal loss caused by browser ad-blockers and iOS privacy restrictions.</p>
-        <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px;">
+        <p style="color:var(--text-muted); font-size:15px; margin-bottom:14px;">Ensure full attribution for your advertising spend without signal loss caused by browser ad-blockers and iOS privacy restrictions.</p>
+        <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px; font-size:14px;">
           <li>Meta Conversions API (CAPI) server-to-server relay</li>
           <li>Google Tag Manager server containers</li>
           <li>Granular ROAS and CAC attribution tracking</li>
