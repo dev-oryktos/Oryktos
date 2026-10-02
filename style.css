@@ -20,13 +20,13 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background-color: var(--bg-stone); color: var(--text-dark); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; width: 100%; }
+body { background-color: var(--bg-stone); color: var(--text-dark); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; width: 100%; margin: 0; }
 
 h1, h2, h3, h4 { font-family: var(--font-heading); letter-spacing: -0.03em; }
 .mono-font, .tag, .stat-num, code { font-family: var(--font-mono); }
 
 /* =========================================
-   UNIVERSAL HEADER & MOBILE DRAWER
+   UNIVERSAL HEADER
 ========================================= */
 header.site-header {
   position: sticky;
@@ -48,7 +48,6 @@ header.site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 }
 
 .brand-link { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
@@ -74,7 +73,7 @@ header.site-header {
   border: none;
   cursor: pointer;
 }
-.nav-cta-btn:hover { background-color: var(--accent-mint); transform: translateY(-1px); box-shadow: 0 4px 18px rgba(43, 228, 167, 0.35); }
+.nav-cta-btn:hover { background-color: var(--accent-mint); transform: translateY(-1px); }
 
 .btn-secondary {
   background-color: transparent;
@@ -123,32 +122,25 @@ header.site-header {
   bottom: 0;
   background: var(--pine-deep);
   z-index: 9998;
-  padding: 36px 28px 48px;
+  padding: 40px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   border-top: 1px solid var(--border-dark);
   box-sizing: border-box;
   overflow-y: auto;
 }
-.mobile-menu-overlay.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.mobile-links { display: flex; flex-direction: column; gap: 20px; }
-.mobile-links a { color: var(--sand-dim); text-decoration: none; font-family: var(--font-heading); font-size: 24px; font-weight: 700; padding: 8px 0; border-bottom: 1px solid rgba(232, 223, 200, 0.06); display: block; }
+.mobile-links { display: flex; flex-direction: column; gap: 0; }
+.mobile-links a { color: var(--sand-dim); text-decoration: none; font-family: var(--font-heading); font-size: 24px; font-weight: 700; padding: 16px 0; border-bottom: 1px solid rgba(232, 223, 200, 0.08); display: block; }
 .mobile-links a:hover, .mobile-links a.active { color: var(--accent-mint); }
-.mobile-footer-actions { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
 
 /* =========================================
    UNIVERSAL FOOTER
 ========================================= */
-footer.site-footer { background-color: var(--pine-deep); color: var(--sand-dim); padding: 80px 24px 40px; border-top: 1px solid var(--border-dark); width: 100%; }
+footer.site-footer { background-color: var(--pine-deep); color: var(--sand-dim); padding: 80px 24px 40px; border-top: 1px solid var(--border-dark); width: 100%; box-sizing: border-box; }
 .footer-container { max-width: 1280px; margin: 0 auto; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 60px; }
 .footer-brand-wrap { margin-bottom: 16px; }
-.footer-logo-img { height: 44px; width: auto; max-width: 200px; object-fit: contain; display: block; }
 .footer-tagline { color: var(--text-muted); font-size: 15px; max-width: 320px; margin-top: 14px; }
 .footer-col h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-mint); margin-bottom: 18px; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
