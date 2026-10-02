@@ -12,7 +12,7 @@
     .about-header h1 { font-size: clamp(32px, 5vw, 68px); font-weight: 800; line-height: 1.1; margin: 0 0 20px; }
     .about-header h1 em { font-style: normal; color: var(--sand-dim); }
     .about-header p { font-size: 17px; color: #8fa59f; line-height: 1.65; max-width: 660px; margin: 0 auto; }
-    .narrative-wrap { max-width: 1040px; margin: 60px auto; padding: 0 20px; }
+    .narrative-wrap { max-width: 1040px; margin: 60px auto; padding: 0 20px; box-sizing: border-box; }
     .narrative-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
     .narrative-sticky { position: sticky; top: 100px; }
     .brand-mark-card { background: var(--pine-deep); border: 1px solid var(--border-dark); border-radius: 20px; padding: 30px 24px; color: var(--sand-dim); text-align: center; }
@@ -29,11 +29,11 @@
 </head>
 <body>
 
-  <!-- UNIVERSAL HEADER -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
-        <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
+        <img src="/logo.png" alt="Oryktos" class="brand-logo-img">
       </a>
       <nav class="desktop-nav">
         <a href="/">Overview</a>
@@ -49,8 +49,8 @@
     </div>
   </header>
 
-  <!-- MOBILE MENU OVERLAY -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-menu-overlay" id="mobileMenu" style="visibility: hidden; opacity: 0; pointer-events: none;">
     <nav class="mobile-links">
       <a href="/" onclick="toggleMenu()">Overview</a>
       <a href="/services/" onclick="toggleMenu()">Services</a>
@@ -58,9 +58,8 @@
       <a href="/about/" class="active" onclick="toggleMenu()">About</a>
       <a href="/contact/" onclick="toggleMenu()">Contact</a>
     </nav>
-    <div class="mobile-footer-actions">
-      <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
-      <div class="mono-font" style="font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">LATENCY: 0.04ms // ALL SYSTEMS NOMINAL</div>
+    <div style="margin-top: 32px;">
+      <a href="/contact/" class="nav-cta-btn" style="width:100%; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
     </div>
   </div>
 
@@ -77,7 +76,7 @@
       <aside class="narrative-sticky">
         <div class="brand-mark-card">
           <div style="font-family:var(--font-heading); font-size:18px; font-weight:700; margin-bottom:8px;">The Split Cube</div>
-          <p style="font-size:13px; color:#8fa59f; line-height:1.6;">Named after the Greek <em>Oryktós</em> (hewn from rock, extracted with intent). The geometric mark represents mathematical balance: precision geometry on one face, kinetic growth on the other.</p>
+          <p style="font-size:13px; color:#8fa59f; line-height:1.6;">Named after the Greek <em>Oryktós</em>. The geometric mark represents mathematical balance: precision geometry on one face, kinetic growth on the other.</p>
           <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border-dark); font-family:var(--font-mono); font-size:11px; color:var(--accent-mint);">EST. 2026 // INDEPENDENT</div>
         </div>
       </aside>
@@ -89,7 +88,6 @@
         <div class="quote-pull">"Speed is not an aesthetic embellishment. In digital commerce and enterprise SaaS, sub-second latency is the fundamental baseline of trust and conversion."</div>
         <h2>Architectural Autonomy.</h2>
         <p>At Oryktos, we do not build websites using generic page builders or off-the-shelf commercial themes. We architect <strong>decoupled systems</strong>: lightweight, headless web platforms, cross-platform mobile apps in clean-architecture Flutter, and server-side conversion telemetry.</p>
-        <p>Clients work directly with senior architects and growth engineers. No intermediaries, no junior handoffs, and no obfuscation.</p>
       </article>
     </div>
   </section>
@@ -123,7 +121,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-wrap">
-            <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
+            <img src="/logo.png" alt="Oryktos" class="footer-logo-img">
           </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
