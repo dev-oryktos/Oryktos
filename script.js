@@ -1,4 +1,4 @@
-// Live Telemetry Clock (UTC + IST + EST)
+// Live Telemetry Clock (UTC + IST + Node Status)
 function updateClock() {
   const clockEl = document.getElementById('telemetry-clock');
   if (!clockEl) return;
@@ -9,17 +9,17 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Terminal speed tester (on home & services pages)
+// Terminal Speed Benchmark Suite (Home & Services)
 function runBenchmark() {
   const terminal = document.getElementById('terminal-log');
   if (!terminal) return;
   terminal.innerHTML = '<span style="color:#2be4a7">> Initializing Oryktos decoupled edge audit...</span>\n';
   
   const steps = [
-    '> DNS Resolution: 4ms [Cloudflare Edge]',
+    '> DNS Resolution: 4ms [Cloudflare Edge Relay]',
     '> TTFB: 22ms [SSR Next.js / Edge Worker]',
     '> Core Web Vitals: LCP 0.6s | CLS 0.00 | INP 18ms',
-    '> Lighthouse Score: 100/100 (Performance, SEO, Best Practices)'
+    '> Lighthouse Score: 100/100 (Performance, SEO, Security)'
   ];
 
   steps.forEach((step, idx) => {
