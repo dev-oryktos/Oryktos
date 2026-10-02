@@ -22,7 +22,7 @@
     .proof-num span { color: var(--accent-mint); }
     .proof-label { font-size: 13px; color: #728b84; font-weight: 500; }
     
-    .section-wrap { max-width: 1240px; margin: 0 auto; padding: 80px 20px; width: 100%; }
+    .section-wrap { max-width: 1240px; margin: 0 auto; padding: 80px 20px; width: 100%; box-sizing: border-box; }
     .section-heading-center { text-align: center; max-width: 680px; margin: 0 auto 50px; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pine-surface); margin-bottom: 12px; }
     .section-title { font-size: clamp(28px, 4vw, 44px); color: var(--pine-deep); line-height: 1.15; margin-bottom: 16px; }
@@ -33,7 +33,7 @@
     .tag { background: var(--bg-sand); color: var(--pine-deep); padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; }
     .tag.dark { background: var(--pine-card); color: var(--sand-dim); }
     
-    .comparison-section { background: #f2eee3; padding: 70px 20px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); width: 100%; }
+    .comparison-section { background: #f2eee3; padding: 70px 20px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); width: 100%; box-sizing: border-box; }
     .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .comp-table { width: 100%; min-width: 580px; border-collapse: collapse; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(11, 40, 34, 0.08); margin-top: 24px; }
     .comp-table th, .comp-table td { padding: 16px 20px; text-align: left; font-size: 13px; }
@@ -45,7 +45,7 @@
     
     .landing-cta { background: var(--pine-deep); border-radius: 24px; padding: 50px 32px; color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .cta-form { background: var(--pine-surface); border: 1px solid rgba(232, 223, 200, 0.14); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
-    .cta-input, .cta-select { width: 100%; background: rgba(6, 24, 20, 0.85); border: 1px solid rgba(232, 223, 200, 0.15); border-radius: 10px; padding: 12px 14px; color: #faf8f5; font-size: 14px; outline: none; }
+    .cta-input, .cta-select { width: 100%; box-sizing: border-box; background: rgba(6, 24, 20, 0.85); border: 1px solid rgba(232, 223, 200, 0.15); border-radius: 10px; padding: 12px 14px; color: #faf8f5; font-size: 14px; outline: none; }
     .cta-input:focus, .cta-select:focus { border-color: var(--accent-mint); }
     
     @media (max-width: 900px) {
@@ -58,11 +58,11 @@
 </head>
 <body>
 
-  <!-- UNIVERSAL HEADER -->
+  <!-- HEADER (LOGO ONLY, NO TEXT) -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
-        <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
+        <img src="/logo.png" alt="Oryktos" class="brand-logo-img">
       </a>
       <nav class="desktop-nav">
         <a href="/" class="active">Overview</a>
@@ -78,8 +78,8 @@
     </div>
   </header>
 
-  <!-- MOBILE MENU OVERLAY -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
+  <!-- MOBILE DRAWER (Hidden safely by default) -->
+  <div class="mobile-menu-overlay" id="mobileMenu" style="visibility: hidden; opacity: 0; pointer-events: none;">
     <nav class="mobile-links">
       <a href="/" class="active" onclick="toggleMenu()">Overview</a>
       <a href="/services/" onclick="toggleMenu()">Services</a>
@@ -87,9 +87,8 @@
       <a href="/about/" onclick="toggleMenu()">About</a>
       <a href="/contact/" onclick="toggleMenu()">Contact</a>
     </nav>
-    <div class="mobile-footer-actions">
-      <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
-      <div class="mono-font" style="font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">LATENCY: 0.04ms // ALL SYSTEMS NOMINAL</div>
+    <div style="margin-top: 32px;">
+      <a href="/contact/" class="nav-cta-btn" style="width:100%; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
     </div>
   </div>
 
@@ -230,7 +229,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-wrap">
-            <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
+            <img src="/logo.png" alt="Oryktos" class="footer-logo-img">
           </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
