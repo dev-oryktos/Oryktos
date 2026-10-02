@@ -258,49 +258,239 @@
 </head>
 <body>
 
-  <!-- UNIVERSAL HEADER -->
-  <header class="site-header">
-    <div class="nav-container">
-      <a href="/" class="brand-link">
-        <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
-        <span class="brand-title">Oryktos<span>.</span></span>
-      </a>
-      <nav class="nav-links">
-        <a href="/" class="active">Overview</a>
-        <a href="/services/">Services</a>
-        <a href="/work/">Case Studies</a>
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <a href="#quick-audit" class="btn-primary desktop-only-cta">Initiate Project →</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <!-- ================= HEADER & MOBILE NAVIGATION ================= -->
+<style>
+  header.site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(6, 24, 20, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(232, 223, 200, 0.12);
+    padding: 14px 20px;
+    box-sizing: border-box;
+    width: 100%;
+  }
 
-  <!-- MOBILE DRAWER -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
-  <aside class="mobile-drawer" id="mobileDrawer">
-    <div>
-      <div class="drawer-header">
-        <div class="brand-title">Oryktos<span>.</span></div>
-        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="/" class="active" onclick="toggleMobileMenu()">Overview</a>
-        <a href="/services/" onclick="toggleMobileMenu()">Services</a>
-        <a href="/work/" onclick="toggleMobileMenu()">Case Studies</a>
-        <a href="/about/" onclick="toggleMobileMenu()">About</a>
-        <a href="/contact/" onclick="toggleMobileMenu()">Contact</a>
-      </nav>
+  .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  /* LOGO SIZING: Only the image, no text */
+  .brand-logo-img {
+    height: 38px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* DESKTOP NAV */
+  .desktop-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .desktop-nav a {
+    color: #8fa59f;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .desktop-nav a:hover,
+  .desktop-nav a.active {
+    color: #e8dfc8;
+  }
+
+  .nav-cta-btn {
+    background-color: #e8dfc8;
+    color: #061814 !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .nav-cta-btn:hover {
+    background-color: #2be4a7;
+    transform: translateY(-1px);
+  }
+
+  /* HAMBURGER BUTTON (Hidden on Desktop) */
+  .mobile-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(232, 223, 200, 0.2);
+    border-radius: 8px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #e8dfc8;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .mobile-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* MOBILE FULLSCREEN OVERLAY MENU */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 70px; /* Sits right under the header bar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #061814;
+    z-index: 9998;
+    padding: 36px 28px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    border-top: 1px solid rgba(232, 223, 200, 0.1);
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .mobile-menu-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mobile-links a {
+    color: #e8dfc8;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(232, 223, 200, 0.06);
+    display: block;
+  }
+
+  .mobile-links a:hover,
+  .mobile-links a.active {
+    color: #2be4a7;
+  }
+
+  .mobile-footer-actions {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* RESPONSIVE TOGGLES */
+  @media (max-width: 900px) {
+    .desktop-nav, .desktop-cta {
+      display: none !important;
+    }
+    .mobile-toggle {
+      display: flex !important;
+    }
+  }
+</style>
+
+<header class="site-header">
+  <div class="nav-container">
+    <!-- Brand Logo ONLY (No text) -->
+    <a href="/" class="brand-link">
+      <img src="/logo.png" alt="Oryktos" class="brand-logo-img">
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a href="/">Overview</a>
+      <a href="/services/">Services</a>
+      <a href="/work/">Case Studies</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <a href="/contact/" class="nav-cta-btn desktop-cta">Initiate Project →</a>
+
+    <!-- Hamburger Toggle for Mobile -->
+    <button class="mobile-toggle" id="mobileMenuBtn" onclick="toggleMenu()" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Dropdown Menu -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <nav class="mobile-links">
+    <a href="/" onclick="toggleMenu()">Overview</a>
+    <a href="/services/" onclick="toggleMenu()">Services</a>
+    <a href="/work/" onclick="toggleMenu()">Case Studies</a>
+    <a href="/about/" onclick="toggleMenu()">About</a>
+    <a href="/contact/" onclick="toggleMenu()">Contact</a>
+  </nav>
+
+  <div class="mobile-footer-actions">
+    <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">
+      Initiate Project →
+    </a>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">
+      LATENCY: 0.04ms // ALL SYSTEMS NOMINAL
     </div>
-    <div class="drawer-footer">
-      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
-    </div>
-  </aside>
+  </div>
+</div>
+<!-- ================= END HEADER ================= -->
+
 
   <!-- HERO -->
   <section class="hero">
