@@ -1,26 +1,28 @@
-// ==========================================
-// ORYKTOS DIGITAL PRACTICE - CORE ENGINE JS
-// ==========================================
-
-// 1. Mobile Menu Toggle
+// Mobile Menu Toggle Logic
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('mobileMenuBtn');
   if (!menu || !btn) return;
 
-  const isOpen = menu.classList.contains('open');
+  const isOpen = btn.classList.contains('is-open');
   if (isOpen) {
-    menu.classList.remove('open');
+    // Close
     btn.classList.remove('is-open');
+    menu.style.opacity = '0';
+    menu.style.pointerEvents = 'none';
+    setTimeout(() => { menu.style.visibility = 'hidden'; }, 300);
     document.body.style.overflow = '';
   } else {
-    menu.classList.add('open');
+    // Open
     btn.classList.add('is-open');
+    menu.style.visibility = 'visible';
+    menu.style.opacity = '1';
+    menu.style.pointerEvents = 'auto';
     document.body.style.overflow = 'hidden';
   }
 }
 
-// 2. Live Telemetry Clock (UTC + Status)
+// Live Telemetry Clock
 function updateClock() {
   const clockEl = document.getElementById('telemetry-clock');
   if (!clockEl) return;
@@ -31,13 +33,12 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// 3. Synthetic Benchmark Runner (Homepage & Services)
+// Synthetic Benchmark
 function runBenchmark() {
   const terminal = document.getElementById('terminal-log');
   if (!terminal) return;
   
   terminal.innerHTML = '<span style="color:#2be4a7">> Initializing Oryktos decoupled edge audit...</span>\n';
-  
   const steps = [
     '> DNS Resolution: 4ms [Cloudflare Edge Relay]',
     '> TTFB: 22ms [SSR Next.js / Edge Worker]',
@@ -53,14 +54,16 @@ function runBenchmark() {
   });
 }
 
-// 4. Auto-close mobile menu on desktop resize
+// Auto-close menu on desktop resize
 window.addEventListener('resize', () => {
   if (window.innerWidth > 900) {
     const menu = document.getElementById('mobileMenu');
     const btn = document.getElementById('mobileMenuBtn');
-    if (menu && menu.classList.contains('open')) {
-      menu.classList.remove('open');
+    if (btn && btn.classList.contains('is-open')) {
       btn.classList.remove('is-open');
+      menu.style.opacity = '0';
+      menu.style.pointerEvents = 'none';
+      menu.style.visibility = 'hidden';
       document.body.style.overflow = '';
     }
   }
