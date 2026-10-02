@@ -1,862 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oryktos — Bespoke Systems, Architecture & Engineering</title>
-
-<!-- Fonts: Syne (Headings), Inter (Body & UI), JetBrains Mono (Specs & Code) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          stonebg: '#faf8f5',
-          forestDark: '#061814',
-          forestDeep: '#0b2822',
-          forestCard: '#0f332c',
-          bone: '#e8dfc8',
-          boneLight: '#f2eee3',
-          boneMuted: '#ded5be',
-          sage: '#6b7f79',
-          sageLight: '#94a5a0',
-          darkText: '#0b2822',
-          darkBody: '#18302b',
-          mintAccent: '#2be4a7'
-        },
-        fontFamily: {
-          display: ['"Syne"', 'sans-serif'],
-          sans: ['"Inter"', 'sans-serif'],
-          mono: ['"JetBrains Mono"', 'monospace'],
-        },
-        borderRadius: {
-          '2xl': '20px',
-          '3xl': '24px',
-          '4xl': '32px',
-        }
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oryktos — Digital Strategy, Engineering & Systems</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+      background-color: var(--pine-deep);
+      color: #fff;
+      padding: 120px 24px 100px;
+      text-align: center;
+      position: relative;
     }
-  }
-</script>
-
-<style>
-  :root {
-    --bg-stone: #faf8f5;
-    --forest-dark: #061814;
-    --forest-deep: #0b2822;
-    --bone: #e8dfc8;
-    --bone-light: #f2eee3;
-    --sage: #6b7f79;
-    --mint: #2be4a7;
-    --border-dark: rgba(232, 223, 200, 0.12);
-    --border-light: rgba(11, 40, 34, 0.08);
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background-color: var(--bg-stone);
-    color: var(--forest-deep);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* Architectural Grid Textures */
-  .grid-pattern-dark {
-    background-image: 
-      linear-gradient(rgba(232, 223, 200, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(232, 223, 200, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
-  .grid-pattern-light {
-    background-image: 
-      linear-gradient(rgba(11, 40, 34, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(11, 40, 34, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #faf8f5; }
-  ::-webkit-scrollbar-thumb { background: #ded5be; border-radius: 999px; }
-
-  /* Pill button micro-animations */
-  .btn-pill {
-    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .btn-pill:hover {
-    transform: translateY(-1.5px);
-  }
-  .btn-pill:active {
-    transform: translateY(0);
-  }
-
-  /* Bento hover */
-  .bento-card {
-    transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.22s ease;
-  }
-  .bento-card:hover {
-    border-color: rgba(11, 40, 34, 0.18);
-    box-shadow: 0 18px 36px -12px rgba(11, 40, 34, 0.06);
-  }
-
-  /* Pulse status */
-  @keyframes statusPulse {
-    0% { transform: scale(0.95); opacity: 0.9; }
-    50% { transform: scale(1.3); opacity: 0.3; }
-    100% { transform: scale(0.95); opacity: 0.9; }
-  }
-  .status-pulse {
-    animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-</style>
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--pine-surface);
+      border: 1px solid var(--border-dark);
+      padding: 6px 16px;
+      border-radius: 999px;
+      color: var(--sand-dim);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 800;
+      line-height: 1.05;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+    .hero p {
+      color: #8fa59f;
+      font-size: 18px;
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .bento-section {
+      max-width: 1240px;
+      margin: -40px auto 80px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      position: relative;
+      z-index: 10;
+    }
+    .bento-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: 0 8px 30px rgba(11, 40, 34, 0.04);
+    }
+    .bento-card.dark {
+      background: var(--pine-surface);
+      border-color: var(--border-dark);
+      color: var(--sand-dim);
+    }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .tag {
+      background: var(--bg-sand);
+      color: var(--pine-deep);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag.dark {
+      background: var(--pine-card);
+      color: var(--sand-dim);
+    }
+    @media (max-width: 850px) {
+      .bento-section { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="antialiased">
+<body>
 
-<!-- NAVIGATION -->
-<header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-[#faf8f5]/85 border-b border-[#0b2822]/8 transition-all">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-    <!-- Brand Logo -->
-    <a href="#" class="flex items-center gap-3.5 group">
-      <div class="w-10 h-10 relative flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full shadow-sm rounded-xl overflow-hidden">
-          <!-- Split Cube Faces -->
-          <polygon points="60,10 110,38 60,66 10,38" fill="#e8dfc8" />
-          <polygon points="10,38 60,66 60,118 10,90" fill="#ded5be" />
-          <polygon points="60,66 110,38 110,90 60,118" fill="#061814" />
-          <!-- Geometric Stylized Rabbit Mask -->
-          <polygon points="40,25 50,55 35,48" fill="#0b2822" />
-          <polygon points="80,25 70,55 85,48" fill="#e8dfc8" />
-          <polygon points="45,55 60,78 40,82 32,68" fill="#061814" />
-          <polygon points="75,55 60,78 80,82 88,68" fill="#faf8f5" />
-          <polygon points="50,75 60,62 70,75 60,92" fill="#2be4a7" opacity="0.95" />
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-cube" viewBox="0 0 100 100">
+          <polygon points="50,5 95,28 50,52 5,28" fill="#e8dfc8"/>
+          <polygon points="5,28 50,52 50,98 5,74" fill="#0b2822"/>
+          <polygon points="95,28 50,52 50,98 95,74" fill="#061814"/>
         </svg>
-      </div>
-      <div class="flex flex-col">
-        <span class="font-display font-extrabold text-xl tracking-tight text-[#061814] leading-tight">Oryktos</span>
-        <span class="font-mono text-[9px] uppercase tracking-[0.22em] font-semibold text-[#6b7f79]">Architecture & Systems</span>
-      </div>
-    </a>
-
-    <!-- Nav Links -->
-    <nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium text-[#0b2822]/80">
-      <a href="#capabilities" class="hover:text-[#061814] transition-colors">Capabilities</a>
-      <a href="#tokens" class="hover:text-[#061814] transition-colors">Design Systems</a>
-      <a href="#process" class="hover:text-[#061814] transition-colors">Process Engine</a>
-      <a href="#stack" class="hover:text-[#061814] transition-colors">Infrastructure</a>
-    </nav>
-
-    <!-- Header Actions -->
-    <div class="flex items-center gap-4">
-      <button onclick="toggleInquiryDrawer()" class="btn-pill bg-[#061814] text-[#e8dfc8] px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-tight hover:bg-[#0b2822] shadow-sm flex items-center gap-2">
-        <span>Book Review</span>
-        <svg class="w-3.5 h-3.5 text-[#e8dfc8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- HERO SECTION -->
-<section class="relative bg-[#061814] text-white pt-24 pb-20 md:pt-32 md:pb-28 px-6 md:px-12 overflow-hidden grid-pattern-dark">
-  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#0b2822] to-transparent opacity-60 blur-[130px] pointer-events-none"></div>
-
-  <div class="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
-    <!-- Monospace Technical Badge -->
-    <div class="inline-flex items-center gap-2.5 bg-[#0b2822] border border-[#e8dfc8]/20 px-4 py-1.5 rounded-full text-[11px] font-mono font-medium tracking-[0.12em] uppercase text-[#e8dfc8] mb-8 shadow-inner">
-      <span class="w-2 h-2 rounded-full bg-[#2be4a7] shadow-[0_0_8px_#2be4a7]"></span>
-      END-TO-END DIGITAL ENGINEERING
-    </div>
-
-    <!-- Editorial Syne Heading -->
-    <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-[68px] leading-[1.08] tracking-tight max-w-4xl text-white mb-7">
-      Bespoke Systems Built for <span class="text-[#e8dfc8] font-normal italic">Speed</span>, Scale & Ergonomics.
-    </h1>
-
-    <!-- Inter Paragraph -->
-    <p class="font-sans text-[#8c9e99] text-base sm:text-lg md:text-[19px] leading-relaxed max-w-2xl mb-10 font-normal">
-      From sub-second web platforms to decoupled CMS architectures, Oryktos turns demanding technical roadmaps into high-converting, resilient digital flagship products.
-    </p>
-
-    <!-- Dual Actions -->
-    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-      <button onclick="toggleInquiryDrawer()" class="btn-pill w-full sm:w-auto bg-[#e8dfc8] text-[#061814] px-8 py-3.5 rounded-full font-bold text-[14px] hover:bg-[#ded5be] flex items-center justify-center gap-2 shadow-xl shadow-black/30">
-        <span>Schedule Architecture Review</span>
-        <svg class="w-4 h-4 text-[#061814]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </button>
-
-      <a href="#capabilities" class="btn-pill w-full sm:w-auto bg-transparent border border-[#e8dfc8]/30 text-[#e8dfc8] px-7 py-3.5 rounded-full font-medium text-[14px] hover:border-[#e8dfc8] hover:bg-[#0b2822]/60 transition-colors flex items-center justify-center gap-2">
-        Explore Capabilities ↓
+        <span class="brand-title">Oryktos<span>.</span></span>
       </a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Overview</a>
+        <a href="services.html">Services</a>
+        <a href="work.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn-primary">Initiate Project →</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge mono-font">
+      <span style="width:7px; height:7px; background:var(--accent-mint); border-radius:50%; display:inline-block;"></span>
+      DIGITAL ENGINEERING & PERFORMANCE STUDIO
+    </div>
+    <h1>Bespoke Systems Built for Speed, Scale & Ergonomics.</h1>
+    <p>From sub-second web platforms to automated acquisition pipelines, we engineer digital products that dominate competitive markets.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="contact.html" class="btn-primary" style="padding:14px 28px; font-size:15px;">Schedule Architecture Review</a>
+      <a href="work.html" class="btn-secondary" style="padding:14px 28px; font-size:15px;">View Case Studies ↓</a>
+    </div>
+  </section>
+
+  <!-- BENTO GRID -->
+  <section class="bento-section">
+    <div class="bento-card">
+      <span class="mono-font" style="font-size:13px; font-weight:700; color:var(--text-muted);">ARCH_01</span>
+      <h3 style="font-size:26px; margin:12px 0; color:var(--pine-deep);">Headless Web & Scalable APIs</h3>
+      <p style="color:var(--text-muted); font-size:15px;">Ultra-fast Next.js frontends decoupled from headless WordPress or custom APIs. Zero page bloat, instant transitions, and strict Core Web Vitals compliance.</p>
+      <div class="tag-row">
+        <span class="tag">Next.js 15</span>
+        <span class="tag">Headless WordPress</span>
+        <span class="tag">GraphQL</span>
+        <span class="tag">Tailwind</span>
+      </div>
     </div>
 
-    <!-- Telemetry Metric Bar -->
-    <div class="w-full mt-20 pt-10 border-t border-[#e8dfc8]/10 grid grid-cols-2 md:grid-cols-4 gap-8 text-left">
-      <div class="border-l border-[#e8dfc8]/15 pl-4">
-        <div class="text-2xl md:text-3xl font-extrabold text-[#e8dfc8] font-mono tracking-tight">&lt;140ms</div>
-        <div class="font-mono text-xs uppercase tracking-wider text-[#6b7f79] font-medium mt-1">Average Edge TTFB</div>
-      </div>
-      <div class="border-l border-[#e8dfc8]/15 pl-4">
-        <div class="text-2xl md:text-3xl font-extrabold text-[#e8dfc8] font-mono tracking-tight">100/100</div>
-        <div class="font-mono text-xs uppercase tracking-wider text-[#6b7f79] font-medium mt-1">Lighthouse Standards</div>
-      </div>
-      <div class="border-l border-[#e8dfc8]/15 pl-4">
-        <div class="text-2xl md:text-3xl font-extrabold text-[#e8dfc8] font-mono tracking-tight">99.99%</div>
-        <div class="font-mono text-xs uppercase tracking-wider text-[#6b7f79] font-medium mt-1">Uptime SLA Target</div>
-      </div>
-      <div class="border-l border-[#e8dfc8]/15 pl-4">
-        <div class="text-2xl md:text-3xl font-extrabold text-[#e8dfc8] font-mono tracking-tight">Zero</div>
-        <div class="font-mono text-xs uppercase tracking-wider text-[#6b7f79] font-medium mt-1">Bloated Frameworks</div>
+    <div class="bento-card dark">
+      <span class="mono-font" style="font-size:13px; font-weight:700; color:var(--accent-mint);">LIVE_TELEMETRY</span>
+      <h3 style="font-size:26px; margin:12px 0;">Edge Benchmark Suite</h3>
+      <div id="terminal-log" class="mono-font" style="background:#061814; padding:18px; border-radius:12px; font-size:12px; min-height:110px; border:1px solid var(--border-dark); white-space:pre-wrap; margin-bottom:16px;">// Press Run to measure simulated TTFB and edge routing</div>
+      <button onclick="runBenchmark()" class="btn-primary" style="background:var(--accent-mint); font-size:12px; padding:8px 16px;">Run Edge Test</button>
+    </div>
+
+    <div class="bento-card dark">
+      <span class="mono-font" style="font-size:13px; font-weight:700; color:var(--accent-mint);">GROWTH_02</span>
+      <h3 style="font-size:26px; margin:12px 0;">Attribution & Performance Media</h3>
+      <p style="color:#8fa59f; font-size:15px;">Eliminate tracking blackouts. Server-Side Google Tag Manager, Meta Conversions API (CAPI), and hyper-segmented paid ad funnels built for measurable returns.</p>
+      <div class="tag-row">
+        <span class="tag dark">Meta CAPI</span>
+        <span class="tag dark">Google Ads PMax</span>
+        <span class="tag dark">GA4 Server-Side</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- BENTO CAPABILITIES SECTION -->
-<section id="capabilities" class="py-24 px-6 md:px-12 max-w-7xl mx-auto grid-pattern-light">
-  
-  <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-    <div>
-      <span class="font-mono text-xs uppercase font-semibold tracking-[0.2em] text-[#0b2822]/70 block mb-2">Engineered Precision</span>
-      <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#061814] tracking-tight">
-        Capabilities Architecture
-      </h2>
+    <div class="bento-card">
+      <span class="mono-font" style="font-size:13px; font-weight:700; color:var(--text-muted);">SYSTEMS_03</span>
+      <h3 style="font-size:26px; margin:12px 0; color:var(--pine-deep);">Mobile Applications (Flutter)</h3>
+      <p style="color:var(--text-muted); font-size:15px;">Native-grade iOS & Android applications compiled from unified Dart codebases. Real-time Firebase backends and offline sync.</p>
+      <div class="tag-row">
+        <span class="tag">Flutter</span>
+        <span class="tag">Dart</span>
+        <span class="tag">Firebase</span>
+        <span class="tag">iOS / Android</span>
+      </div>
     </div>
-    <p class="font-sans text-[#6b7f79] max-w-md text-sm md:text-base leading-relaxed">
-      We replace chaotic agency retainers with structured, predictable engineering sprints: tailored code, design token governance, and telemetry.
-    </p>
-  </div>
+  </section>
 
-  <div class="flex flex-col gap-10">
-
-    <!-- ROW 1: Web Applications & Interactive Edge Terminal -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-      <div class="lg:col-span-6 bento-card bg-white border border-[#0b2822]/8 p-8 sm:p-10 rounded-3xl flex flex-col justify-between shadow-sm">
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
         <div>
-          <div class="flex items-center justify-between mb-6">
-            <span class="font-mono text-xs font-bold text-[#061814] px-2.5 py-1 rounded bg-[#f2eee3] border border-[#0b2822]/10">MOD_01</span>
-            <span class="font-mono text-xs text-[#6b7f79] font-semibold">Decoupled Systems</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#061814] mb-4 tracking-tight leading-snug">
-            Scalable Web Applications & API Architecture
-          </h3>
-          <p class="font-sans text-[#6b7f79] text-sm sm:text-base leading-relaxed mb-8">
-            Engineered with modular component hierarchies, static hydration, and edge-cached GraphQL endpoints for instantaneous page transitions and zero database bottlenecks.
-          </p>
+          <div class="brand-title" style="font-size:24px;">Oryktos<span>.</span></div>
+          <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
-
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="about.html">About Agency</a></li>
+            <li><a href="contact.html">Contact & Scoping</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="services.html">Headless WordPress</a></li>
+            <li><a href="services.html">Next.js & React</a></li>
+            <li><a href="services.html">Flutter Mobile</a></li>
+            <li><a href="services.html">Meta & Google Ads</a></li>
+          </ul>
+        </div>
         <div>
-          <div class="font-mono text-xs uppercase font-semibold tracking-wider text-[#061814]/60 mb-3">Core Stack Components</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Next.js 15 App Router</span>
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Headless WP Mesh</span>
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">GraphQL & Edge Cache</span>
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Cloudflare Workers</span>
-          </div>
+          <div class="telemetry-box mono-font" id="telemetry-clock">INITIALIZING TELEMETRY...</div>
         </div>
       </div>
-
-      <!-- Live Interactive Terminal -->
-      <div class="lg:col-span-6 bg-[#061814] rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-[#e8dfc8]/15 shadow-xl text-[#e8dfc8] font-mono text-xs overflow-hidden">
-        <div class="flex items-center justify-between pb-4 border-b border-[#e8dfc8]/10 mb-4">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-[#ff5f56]"></span>
-            <span class="w-3 h-3 rounded-full bg-[#ffbd2e]"></span>
-            <span class="w-3 h-3 rounded-full bg-[#27c93f]"></span>
-            <span class="ml-2 text-[11px] text-[#8c9e99]">oryktos-edge-benchmark ~ zsh</span>
-          </div>
-          <button onclick="runBenchmarkTest()" class="text-[11px] bg-[#0b2822] border border-[#e8dfc8]/20 px-2.5 py-1 rounded text-[#e8dfc8] hover:bg-[#e8dfc8] hover:text-[#061814] transition-all">
-            ↻ Run Edge Benchmark
-          </button>
-        </div>
-
-        <div class="bg-[#0b2822]/60 rounded-xl p-4 border border-[#e8dfc8]/10 space-y-2 leading-relaxed" id="terminal-content">
-          <div class="text-[#6b7f79]">// Oryktos Global Edge Routing Check</div>
-          <div><span class="text-[#2be4a7]">✔</span> Cluster: <span class="text-white">hnd-1 (Tokyo) + lhr-1 (London)</span></div>
-          <div><span class="text-[#2be4a7]">✔</span> Cold Start: <span class="text-[#2be4a7] font-bold">0.8ms</span> (V8 isolate memory snapshot)</div>
-          <div><span class="text-[#2be4a7]">✔</span> TTFB Real-time: <span class="text-white font-bold" id="edge-ttfb">34ms</span></div>
-          <div><span class="text-[#2be4a7]">✔</span> Core Web Vitals Status: <span class="text-[#e8dfc8]">FID 0ms · LCP 0.6s · CLS 0.00</span></div>
-          <div class="pt-2 text-[11px] text-[#6b7f79]">
-            Target payload compressed via Brotli. Zero unused runtime script payloads.
-          </div>
-        </div>
-
-        <div class="mt-4 pt-3 flex items-center justify-between text-[11px] text-[#6b7f79]">
-          <span>Endpoint: https://api.oryktos.com/v1/health</span>
-          <span class="text-[#2be4a7] flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-[#2be4a7]"></span>
-            Edge Isolated
-          </span>
-        </div>
+      <div class="footer-bottom">
+        <div>© 2026 Oryktos Agency. All rights reserved.</div>
+        <div class="mono-font" style="color:var(--accent-mint);">READY FOR NETLIFY CI/CD</div>
       </div>
     </div>
+  </footer>
 
-    <!-- ROW 2: Interactive Design Tokens Sandpit + Geometric UI Systems -->
-    <div id="tokens" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-      <div class="lg:col-span-6 bg-[#e8dfc8] rounded-3xl p-8 sm:p-10 flex flex-col justify-between border border-[#0b2822]/10 shadow-sm">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="font-mono text-xs font-bold text-[#061814] uppercase tracking-wider">Dynamic Token Engine</span>
-            <span class="font-mono text-xs font-semibold text-[#061814]/70">Interactive Preview</span>
-          </div>
-
-          <!-- Dynamic Component Box preview -->
-          <div class="bg-white border border-[#0b2822]/15 p-6 rounded-2xl shadow-sm mb-6 transition-all duration-300" id="preview-token-target">
-            <div class="flex items-center justify-between mb-4">
-              <span class="font-display font-bold text-sm text-[#061814] uppercase tracking-wider">Oryktos Card Component</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f2eee3] text-[#061814]" id="token-radius-label">radius: 16px</span>
-            </div>
-            <p class="font-sans text-xs text-[#6b7f79] mb-4">This UI component dynamically reads typography scale, border tokens, and tone variables.</p>
-            <div class="flex items-center gap-3">
-              <button class="px-4 py-2 text-xs font-semibold text-white bg-[#061814] rounded-lg transition-all" id="demo-btn">
-                Sample Primary Action
-              </button>
-              <div class="text-[11px] font-mono text-[#061814]/60">Tokens: Active</div>
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <div class="space-y-4">
-            <div>
-              <div class="font-sans text-xs font-bold text-[#061814] mb-2 flex justify-between">
-                <span>Select Border Radius Token</span>
-                <span class="font-mono text-[11px] text-[#061814]/70" id="current-token-val">var(--radius-lg)</span>
-              </div>
-              <div class="grid grid-cols-3 gap-2">
-                <button onclick="setRadiusToken('4px', 'var(--radius-sm)')" class="bg-white/80 hover:bg-white text-[#061814] text-xs font-medium py-1.5 px-3 rounded-lg border border-[#0b2822]/10 transition-colors">
-                  Sharp (4px)
-                </button>
-                <button onclick="setRadiusToken('16px', 'var(--radius-lg)')" class="bg-white text-[#061814] text-xs font-medium py-1.5 px-3 rounded-lg border border-[#061814] transition-colors">
-                  Rounded (16px)
-                </button>
-                <button onclick="setRadiusToken('999px', 'var(--radius-full)')" class="bg-white/80 hover:bg-white text-[#061814] text-xs font-medium py-1.5 px-3 rounded-lg border border-[#0b2822]/10 transition-colors">
-                  Pill (Full)
-                </button>
-              </div>
-            </div>
-
-            <!-- Palette Swatches -->
-            <div>
-              <div class="font-sans text-xs font-bold text-[#061814] mb-2">Palette Identity Token</div>
-              <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5 text-xs font-semibold">
-                  <span class="w-4 h-4 rounded-full bg-[#061814] border border-white"></span>
-                  Forest Onyx
-                </div>
-                <div class="flex items-center gap-1.5 text-xs font-semibold">
-                  <span class="w-4 h-4 rounded-full bg-[#0b2822] border border-white"></span>
-                  Deep Pine
-                </div>
-                <div class="flex items-center gap-1.5 text-xs font-semibold">
-                  <span class="w-4 h-4 rounded-full bg-[#e8dfc8] border border-black/20"></span>
-                  Sandstone
-                </div>
-                <div class="flex items-center gap-1.5 text-xs font-semibold">
-                  <span class="w-4 h-4 rounded-full bg-[#faf8f5] border border-black/20"></span>
-                  Bone Stone
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-6 border-t border-[#0b2822]/10 mt-6 text-xs text-[#061814]/70 font-mono">
-          Syncs natively to Figma Variables and code repository via automated GitHub Actions.
-        </div>
-      </div>
-
-      <!-- Right Card: Geometric UI Systems -->
-      <div class="lg:col-span-6 bento-card bg-white border border-[#0b2822]/8 p-8 sm:p-10 rounded-3xl flex flex-col justify-between shadow-sm">
-        <div>
-          <div class="flex items-center justify-between mb-6">
-            <span class="font-mono text-xs font-bold text-[#061814] px-2.5 py-1 rounded bg-[#f2eee3] border border-[#0b2822]/10">MOD_02</span>
-            <span class="font-mono text-xs text-[#6b7f79] font-semibold">Interface Ergonomics</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#061814] mb-4 tracking-tight leading-snug">
-            Geometric UI Systems & Behavioral UX
-          </h3>
-          <p class="font-sans text-[#6b7f79] text-sm sm:text-base leading-relaxed mb-8">
-            Every interaction is calculated: intentional whitespace, strict proportional grids, predictable tap zones, and cognitive ease to eliminate conversion hesitation.
-          </p>
-        </div>
-
-        <div>
-          <div class="font-mono text-xs uppercase font-semibold tracking-wider text-[#061814]/60 mb-3">Standards & Governance</div>
-          <div class="flex flex-wrap gap-2">
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Figma Token JSON</span>
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">WCAG AAA Validated</span>
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">60fps Micro-interactions</span>
-            <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Adaptive Night Mode</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ROW 3: Telemetry, Conversion Tracking & High-Performance Growth -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-      <div class="lg:col-span-7 bento-card bg-white border border-[#0b2822]/8 p-8 sm:p-10 rounded-3xl flex flex-col justify-between shadow-sm">
-        <div>
-          <div class="flex items-center justify-between mb-6">
-            <span class="font-mono text-xs font-bold text-[#061814] px-2.5 py-1 rounded bg-[#f2eee3] border border-[#0b2822]/10">MOD_03</span>
-            <span class="font-mono text-xs text-[#6b7f79] font-semibold">Telemetry & Attribution</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#061814] mb-4 tracking-tight leading-snug">
-            First-Party Server Tracking & Conversion Telemetry
-          </h3>
-          <p class="font-sans text-[#6b7f79] text-sm sm:text-base leading-relaxed mb-6">
-            Eliminate ad-blocker blindness and privacy signal loss. We route conversion events server-side via custom proxy gateways, maintaining 100% data fidelity for Meta CAPI and Google Analytics 4.
-          </p>
-
-          <div class="grid grid-cols-3 gap-3 mb-6 bg-[#faf8f5] p-4 rounded-xl border border-[#0b2822]/6">
-            <div>
-              <div class="font-mono text-[11px] text-[#6b7f79] uppercase font-bold">Signal Health</div>
-              <div class="text-base font-extrabold text-[#061814] font-mono mt-0.5">9.8 / 10</div>
-            </div>
-            <div>
-              <div class="font-mono text-[11px] text-[#6b7f79] uppercase font-bold">Match Quality</div>
-              <div class="text-base font-extrabold text-[#061814] font-mono mt-0.5">94.2%</div>
-            </div>
-            <div>
-              <div class="font-mono text-[11px] text-[#6b7f79] uppercase font-bold">Ad Block Bypass</div>
-              <div class="text-base font-extrabold text-[#061814] font-mono mt-0.5">100%</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Meta CAPI Proxy</span>
-          <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Server GTM (sGTM)</span>
-          <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">PostHog Warehouse</span>
-          <span class="font-mono bg-[#f2eee3] text-[#061814] px-3.5 py-1.5 rounded-lg text-xs font-medium">Attribution Graph</span>
-        </div>
-      </div>
-
-      <!-- Right Card: Performance Gauge -->
-      <div class="lg:col-span-5 bg-[#0b2822] rounded-3xl p-8 sm:p-10 flex flex-col justify-between text-white border border-[#e8dfc8]/15 shadow-sm">
-        <div>
-          <div class="flex items-center justify-between mb-6">
-            <span class="font-mono text-xs uppercase font-bold text-[#e8dfc8]">Audit Standard</span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#2be4a7] shadow-[0_0_8px_#2be4a7]"></span>
-          </div>
-
-          <div class="flex flex-col items-center justify-center my-6">
-            <div class="relative w-36 h-36 flex items-center justify-center">
-              <svg class="w-full h-full transform -rotate-90">
-                <circle cx="72" cy="72" r="62" stroke="#061814" stroke-width="8" fill="transparent" />
-                <circle cx="72" cy="72" r="62" stroke="#2be4a7" stroke-width="8" stroke-dasharray="390" stroke-dashoffset="0" stroke-linecap="round" fill="transparent" />
-              </svg>
-              <div class="absolute flex flex-col items-center justify-center">
-                <span class="font-mono text-4xl font-extrabold text-[#e8dfc8]">100</span>
-                <span class="font-mono text-[10px] uppercase font-bold tracking-widest text-[#2be4a7]">Performance</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2 text-xs font-mono text-[#8c9e99]">
-            <div class="flex justify-between border-b border-[#e8dfc8]/10 pb-1.5">
-              <span>First Contentful Paint</span>
-              <span class="text-[#2be4a7]">0.4s</span>
-            </div>
-            <div class="flex justify-between border-b border-[#e8dfc8]/10 pb-1.5">
-              <span>Speed Index</span>
-              <span class="text-[#2be4a7]">0.6s</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Cumulative Layout Shift</span>
-              <span class="text-[#2be4a7]">0.000</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-6 pt-4 border-t border-[#e8dfc8]/10 text-center text-xs font-mono text-[#8c9e99]">
-          CrUX & Lighthouse Real-User Validated.
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROCESS SECTION: THE ORYKTOS ENGINE -->
-<section id="process" class="py-24 px-6 md:px-12 bg-white border-y border-[#0b2822]/8">
-  <div class="max-w-7xl mx-auto">
-    <div class="max-w-2xl mb-16">
-      <span class="font-mono text-xs uppercase font-bold tracking-[0.2em] text-[#0b2822]/70 block mb-2">Linear Cadence</span>
-      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#061814] tracking-tight mb-4">
-        The Architecture Engine
-      </h2>
-      <p class="font-sans text-[#6b7f79] text-base leading-relaxed">
-        Four phases. Continuous validation. Zero mystery meetings. You receive weekly production builds and clear engineering logs.
-      </p>
-    </div>
-
-    <!-- 4 Step Process Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Step 01 -->
-      <div class="p-8 rounded-2xl bg-[#faf8f5] border border-[#0b2822]/8 flex flex-col justify-between hover:border-[#0b2822]/25 transition-all">
-        <div>
-          <div class="font-mono text-3xl font-extrabold text-[#061814] mb-6">01</div>
-          <h4 class="font-display font-bold text-lg text-[#061814] mb-3">Diagnostic & Telemetry</h4>
-          <p class="font-sans text-xs sm:text-sm text-[#6b7f79] leading-relaxed">
-            We inspect your existing codebase, latency profiles, conversion drop-off points, and schema compliance.
-          </p>
-        </div>
-        <div class="mt-8 pt-4 border-t border-[#0b2822]/8 text-[11px] font-mono text-[#061814]/70">
-          Output: Technical Audit RFC
-        </div>
-      </div>
-
-      <!-- Step 02 -->
-      <div class="p-8 rounded-2xl bg-[#faf8f5] border border-[#0b2822]/8 flex flex-col justify-between hover:border-[#0b2822]/25 transition-all">
-        <div>
-          <div class="font-mono text-3xl font-extrabold text-[#061814] mb-6">02</div>
-          <h4 class="font-display font-bold text-lg text-[#061814] mb-3">System Blueprinting</h4>
-          <p class="font-sans text-xs sm:text-sm text-[#6b7f79] leading-relaxed">
-            Component wireframes, design token dictionaries, API schemas, and deployment topologies are locked.
-          </p>
-        </div>
-        <div class="mt-8 pt-4 border-t border-[#0b2822]/8 text-[11px] font-mono text-[#061814]/70">
-          Output: Figma System + Schema Docs
-        </div>
-      </div>
-
-      <!-- Step 03 -->
-      <div class="p-8 rounded-2xl bg-[#faf8f5] border border-[#0b2822]/8 flex flex-col justify-between hover:border-[#0b2822]/25 transition-all">
-        <div>
-          <div class="font-mono text-3xl font-extrabold text-[#061814] mb-6">03</div>
-          <h4 class="font-display font-bold text-lg text-[#061814] mb-3">Precision Engineering</h4>
-          <p class="font-sans text-xs sm:text-sm text-[#6b7f79] leading-relaxed">
-            Clean TypeScript implementation, sub-second headless connections, and server-side tracking buildout.
-          </p>
-        </div>
-        <div class="mt-8 pt-4 border-t border-[#0b2822]/8 text-[11px] font-mono text-[#061814]/70">
-          Output: CI/CD Preview Deployments
-        </div>
-      </div>
-
-      <!-- Step 04 -->
-      <div class="p-8 rounded-2xl bg-[#faf8f5] border border-[#0b2822]/8 flex flex-col justify-between hover:border-[#0b2822]/25 transition-all">
-        <div>
-          <div class="font-mono text-3xl font-extrabold text-[#061814] mb-6">04</div>
-          <h4 class="font-display font-bold text-lg text-[#061814] mb-3">Scale & Telemetry</h4>
-          <p class="font-sans text-xs sm:text-sm text-[#6b7f79] leading-relaxed">
-            Edge CDN warmup, automated regression monitors, search engine index priority, and conversion feedback loops.
-          </p>
-        </div>
-        <div class="mt-8 pt-4 border-t border-[#0b2822]/8 text-[11px] font-mono text-[#061814]/70">
-          Output: Live Production Flagship
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INFRASTRUCTURE & STACK -->
-<section id="stack" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-  <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-    <div>
-      <span class="font-mono text-xs uppercase font-semibold tracking-[0.2em] text-[#0b2822]/70 block mb-2">Technical Foundations</span>
-      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-[#061814] tracking-tight">
-        Engineered Infrastructure
-      </h2>
-    </div>
-    <p class="font-sans text-[#6b7f79] max-w-md text-sm md:text-base leading-relaxed">
-      Curated stacks that eliminate bloat, minimize dependencies, and enforce high cache hit rates.
-    </p>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white border border-[#0b2822]/8 p-8 rounded-3xl bento-card">
-      <div class="font-mono text-xs font-bold text-[#061814] mb-4">STACK_CAT // 01</div>
-      <h3 class="font-display font-bold text-xl text-[#061814] mb-3">Client Layer</h3>
-      <p class="font-sans text-xs text-[#6b7f79] mb-6 leading-relaxed">Ultra-lean client bundles compiled for instantaneous initial loads.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Next.js 15</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">React Server Comps</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Tailwind CSS</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">TypeScript</span>
-      </div>
-    </div>
-
-    <div class="bg-white border border-[#0b2822]/8 p-8 rounded-3xl bento-card">
-      <div class="font-mono text-xs font-bold text-[#061814] mb-4">STACK_CAT // 02</div>
-      <h3 class="font-display font-bold text-xl text-[#061814] mb-3">Decoupled APIs</h3>
-      <p class="font-sans text-xs text-[#6b7f79] mb-6 leading-relaxed">Headless CMS content layers federated through high-performance caching.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Headless WP</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">WPGraphQL</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">REST APIs</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Sanity CMS</span>
-      </div>
-    </div>
-
-    <div class="bg-white border border-[#0b2822]/8 p-8 rounded-3xl bento-card">
-      <div class="font-mono text-xs font-bold text-[#061814] mb-4">STACK_CAT // 03</div>
-      <h3 class="font-display font-bold text-xl text-[#061814] mb-3">Edge & Telemetry</h3>
-      <p class="font-sans text-xs text-[#6b7f79] mb-6 leading-relaxed">Server-side execution for resilient attribution and zero-latency worldwide.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Cloudflare Edge</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Server GTM</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">Meta CAPI</span>
-        <span class="font-mono bg-[#f2eee3] text-[#061814] px-2.5 py-1 rounded text-xs">GA4 Staging</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HIGH IMPACT CTA SECTION -->
-<section class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-  <div class="bg-[#061814] text-white rounded-4xl p-10 sm:p-16 md:p-20 text-center relative overflow-hidden grid-pattern-dark border border-[#e8dfc8]/15 shadow-2xl">
-    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#2be4a7]/10 blur-[90px] rounded-full pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-      <div class="inline-flex items-center gap-2 bg-[#0b2822] border border-[#e8dfc8]/20 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold text-[#e8dfc8] mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#2be4a7]"></span>
-        FOUNDER-DIRECT ARCHITECTURE
-      </div>
-
-      <h2 class="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-[#e8dfc8] tracking-tight leading-[1.1] mb-6">
-        Ready to initiate your digital build?
-      </h2>
-
-      <p class="font-sans text-[#8c9e99] text-base sm:text-lg mb-10 max-w-xl font-normal leading-relaxed">
-        Speak directly with lead systems architects. No junior account managers, no generic pitch decks—just raw technical feasibility and speed.
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center gap-4">
-        <button onclick="toggleInquiryDrawer()" class="btn-pill bg-[#e8dfc8] text-[#061814] px-9 py-4 rounded-full font-bold text-[14px] hover:bg-white shadow-xl">
-          Book Architecture Discovery Call
-        </button>
-        <a href="mailto:architects@oryktos.com" class="text-xs uppercase tracking-widest font-mono text-[#8c9e99] hover:text-[#e8dfc8] transition-colors py-2 px-4">
-          direct: architects@oryktos.com
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-[#061814] text-[#8c9e99] border-t border-[#e8dfc8]/10 pt-16 pb-12 px-6 md:px-12 text-xs">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#e8dfc8]/10">
-    <div class="md:col-span-4 flex flex-col gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 relative flex-shrink-0">
-          <svg viewBox="0 0 120 120" fill="none" class="w-full h-full rounded-lg">
-            <polygon points="60,10 110,38 60,66 10,38" fill="#e8dfc8" />
-            <polygon points="10,38 60,66 60,118 10,90" fill="#ded5be" />
-            <polygon points="60,66 110,38 110,90 60,118" fill="#0b2822" />
-            <polygon points="50,75 60,62 70,75 60,92" fill="#2be4a7" />
-          </svg>
-        </div>
-        <span class="font-display font-extrabold text-lg text-[#e8dfc8]">Oryktos</span>
-      </div>
-      <p class="font-sans text-xs text-[#6b7f79] leading-relaxed max-w-sm">
-        Specialist agency engineering high-velocity web platforms, design systems, and conversion telemetry for category-defining organizations.
-      </p>
-      <div class="flex items-center gap-2 text-[11px] text-[#2be4a7] font-mono mt-2">
-        <span class="w-2 h-2 rounded-full bg-[#2be4a7] status-pulse"></span>
-        Systems Operational · Tokyo · Dubai · London · Remote
-      </div>
-    </div>
-
-    <div class="md:col-span-2">
-      <div class="text-[11px] font-mono uppercase font-bold text-[#e8dfc8] tracking-widest mb-3">Capabilities</div>
-      <ul class="space-y-2.5 font-sans">
-        <li><a href="#capabilities" class="hover:text-[#e8dfc8] transition-colors">Decoupled Web Apps</a></li>
-        <li><a href="#tokens" class="hover:text-[#e8dfc8] transition-colors">Design Token Systems</a></li>
-        <li><a href="#capabilities" class="hover:text-[#e8dfc8] transition-colors">Server-Side GA4 / CAPI</a></li>
-        <li><a href="#stack" class="hover:text-[#e8dfc8] transition-colors">Edge Infrastructure</a></li>
-      </ul>
-    </div>
-
-    <div class="md:col-span-2">
-      <div class="text-[11px] font-mono uppercase font-bold text-[#e8dfc8] tracking-widest mb-3">Governance</div>
-      <ul class="space-y-2.5 font-sans">
-        <li><a href="#" class="hover:text-[#e8dfc8] transition-colors">Security Whitepaper</a></li>
-        <li><a href="#" class="hover:text-[#e8dfc8] transition-colors">SLA Targets</a></li>
-        <li><a href="#" class="hover:text-[#e8dfc8] transition-colors">GitHub Repository</a></li>
-        <li><a href="#" class="hover:text-[#e8dfc8] transition-colors">WCAG Standards</a></li>
-      </ul>
-    </div>
-
-    <div class="md:col-span-4 flex flex-col justify-between">
-      <div>
-        <div class="text-[11px] font-mono uppercase font-bold text-[#e8dfc8] tracking-widest mb-3">Direct Architectural Consultation</div>
-        <p class="font-sans text-xs text-[#6b7f79] mb-4">
-          Schedule an initial 30-minute diagnostic session to assess your application performance profile.
-        </p>
-        <button onclick="toggleInquiryDrawer()" class="btn-pill inline-flex items-center gap-2 bg-[#0b2822] border border-[#e8dfc8]/25 text-[#e8dfc8] px-4 py-2 rounded-full font-medium hover:bg-[#e8dfc8] hover:text-[#061814] transition-all">
-          <span>Launch Inquiry Form</span>
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-[#6b7f79]">
-    <div>© 2026 Oryktos Digital Architecture & Engineering. All rights reserved.</div>
-    <div class="flex items-center gap-6">
-      <a href="#" class="hover:text-[#e8dfc8]">Privacy Policy</a>
-      <a href="#" class="hover:text-[#e8dfc8]">Terms of Service</a>
-      <a href="#" class="hover:text-[#e8dfc8]">Vulnerability Disclosure</a>
-    </div>
-  </div>
-</footer>
-
-<!-- SLIDE-OVER ARCHITECTURE INQUIRY DRAWER -->
-<div id="inquiry-drawer-backdrop" onclick="toggleInquiryDrawer()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-<div id="inquiry-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#faf8f5] z-50 shadow-2xl border-l border-[#0b2822]/10 transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between overflow-y-auto">
-  <!-- Drawer Header -->
-  <div class="p-6 border-b border-[#0b2822]/8 flex items-center justify-between bg-white sticky top-0 z-10">
-    <div class="flex items-center gap-2.5">
-      <div class="w-6 h-6 rounded bg-[#061814] flex items-center justify-center text-[#e8dfc8] font-mono text-[10px] font-bold">O</div>
-      <span class="font-display font-bold text-base text-[#061814]">Architectural Scoping</span>
-    </div>
-    <button onclick="toggleInquiryDrawer()" class="w-8 h-8 rounded-full bg-[#faf8f5] hover:bg-[#e8dfc8] flex items-center justify-center text-[#061814] transition-colors" aria-label="Close dialog">
-      ✕
-    </button>
-  </div>
-
-  <!-- Form Body -->
-  <div class="p-6 space-y-6 flex-1">
-    <div>
-      <h3 class="font-display font-extrabold text-xl text-[#061814] mb-1">Schedule Architecture Review</h3>
-      <p class="font-sans text-xs text-[#6b7f79]">Submit your project parameters. A founding engineer will respond within 24 hours.</p>
-    </div>
-
-    <form id="inquiry-form" onsubmit="handleInquirySubmit(event)" class="space-y-4">
-      <div>
-        <label class="block font-mono text-xs font-bold text-[#061814] uppercase tracking-wider mb-1.5">Full Name</label>
-        <input type="text" required placeholder="Elena Rostova" class="w-full bg-white border border-[#0b2822]/15 rounded-xl px-3.5 py-2.5 text-xs text-[#061814] focus:outline-none focus:border-[#061814] transition-colors">
-      </div>
-
-      <div>
-        <label class="block font-mono text-xs font-bold text-[#061814] uppercase tracking-wider mb-1.5">Work Email</label>
-        <input type="email" required placeholder="elena@enterprise.com" class="w-full bg-white border border-[#0b2822]/15 rounded-xl px-3.5 py-2.5 text-xs text-[#061814] focus:outline-none focus:border-[#061814] transition-colors">
-      </div>
-
-      <div>
-        <label class="block font-mono text-xs font-bold text-[#061814] uppercase tracking-wider mb-1.5">Project Scope Focus</label>
-        <div class="grid grid-cols-2 gap-2 text-xs font-sans">
-          <label class="flex items-center gap-2 p-2.5 rounded-lg border border-[#0b2822]/10 bg-white cursor-pointer hover:border-[#061814]">
-            <input type="checkbox" name="scope" value="Decoupled Web" class="accent-[#061814]">
-            <span>Web Platform</span>
-          </label>
-          <label class="flex items-center gap-2 p-2.5 rounded-lg border border-[#0b2822]/10 bg-white cursor-pointer hover:border-[#061814]">
-            <input type="checkbox" name="scope" value="Design Tokens" class="accent-[#061814]">
-            <span>Design System</span>
-          </label>
-          <label class="flex items-center gap-2 p-2.5 rounded-lg border border-[#0b2822]/10 bg-white cursor-pointer hover:border-[#061814]">
-            <input type="checkbox" name="scope" value="Server GA4" class="accent-[#061814]">
-            <span>Telemetry / GA4</span>
-          </label>
-          <label class="flex items-center gap-2 p-2.5 rounded-lg border border-[#0b2822]/10 bg-white cursor-pointer hover:border-[#061814]">
-            <input type="checkbox" name="scope" value="Speed Audit" class="accent-[#061814]">
-            <span>Speed Audit</span>
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label class="block font-mono text-xs font-bold text-[#061814] uppercase tracking-wider mb-1.5">Budget Allocation</label>
-        <select class="w-full bg-white border border-[#0b2822]/15 rounded-xl px-3.5 py-2.5 text-xs text-[#061814] focus:outline-none focus:border-[#061814]">
-          <option>$10k – $25k (Sprint Build)</option>
-          <option>$25k – $60k (Complete Architecture)</option>
-          <option>$60k+ (Enterprise Decoupled Infrastructure)</option>
-        </select>
-      </div>
-
-      <div>
-        <label class="block font-mono text-xs font-bold text-[#061814] uppercase tracking-wider mb-1.5">Project Objective</label>
-        <textarea rows="3" placeholder="Brief outline of bottlenecks, current tech stack, or relaunch timeline..." class="w-full bg-white border border-[#0b2822]/15 rounded-xl px-3.5 py-2.5 text-xs text-[#061814] focus:outline-none focus:border-[#061814]"></textarea>
-      </div>
-
-      <button type="submit" class="btn-pill w-full bg-[#061814] text-[#e8dfc8] py-3.5 rounded-full text-xs font-bold hover:bg-[#0b2822] shadow-md transition-colors mt-2">
-        Transmit Scoping Request →
-      </button>
-
-      <div id="form-feedback" class="hidden text-center text-xs p-3 rounded-lg bg-[#e8dfc8] text-[#061814] font-semibold mt-2">
-        Requirement dispatched. An Oryktos principal engineer will reach out.
-      </div>
-    </form>
-  </div>
-
-  <div class="p-6 border-t border-[#0b2822]/8 bg-[#f2eee3] text-[11px] font-mono text-[#6b7f79]">
-    Non-disclosure agreements executed prior to deep architectural data inspection upon request.
-  </div>
-</div>
-
-<!-- SCRIPTS -->
-<script>
-  // 1. Drawer Toggle Logic
-  let drawerOpen = false;
-  function toggleInquiryDrawer() {
-    drawerOpen = !drawerOpen;
-    const backdrop = document.getElementById('inquiry-drawer-backdrop');
-    const drawer = document.getElementById('inquiry-drawer');
-
-    if (drawerOpen) {
-      backdrop.classList.remove('pointer-events-none', 'opacity-0');
-      backdrop.classList.add('opacity-100');
-      drawer.classList.remove('translate-x-full');
-      document.body.style.overflow = 'hidden';
-    } else {
-      backdrop.classList.add('opacity-0', 'pointer-events-none');
-      backdrop.classList.remove('opacity-100');
-      drawer.classList.add('translate-x-full');
-      document.body.style.overflow = '';
-    }
-  }
-
-  // 2. Token Sandbox Dynamic Switcher
-  function setRadiusToken(pxValue, tokenName) {
-    const target = document.getElementById('preview-token-target');
-    const btn = document.getElementById('demo-btn');
-    const label = document.getElementById('token-radius-label');
-    const tokenVal = document.getElementById('current-token-val');
-
-    target.style.borderRadius = pxValue;
-    btn.style.borderRadius = pxValue;
-    label.innerText = `radius: ${pxValue}`;
-    tokenVal.innerText = tokenName;
-  }
-
-  // 3. Interactive Terminal Edge Benchmark
-  function runBenchmarkTest() {
-    const ttfbElem = document.getElementById('edge-ttfb');
-    ttfbElem.innerText = 'Testing edge latency...';
-    
-    setTimeout(() => {
-      const simulated = Math.floor(Math.random() * (38 - 22 + 1)) + 22;
-      ttfbElem.innerText = `${simulated}ms (P95 Global Edge)`;
-    }, 400);
-  }
-
-  // 4. Form Submit Handler
-  function handleInquirySubmit(e) {
-    e.preventDefault();
-    const feedback = document.getElementById('form-feedback');
-    feedback.classList.remove('hidden');
-    setTimeout(() => {
-      toggleInquiryDrawer();
-      feedback.classList.add('hidden');
-      document.getElementById('inquiry-form').reset();
-    }, 1800);
-  }
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
