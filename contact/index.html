@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Initiate Scoping — Oryktos</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-header {
+      background-color: var(--pine-deep);
+      color: #fff;
+      padding: 80px 24px 70px;
+      text-align: center;
+    }
+    .form-wrap {
+      max-width: 680px;
+      margin: -30px auto 100px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: 0 10px 40px rgba(11, 40, 34, 0.05);
+      position: relative;
+      z-index: 10;
+    }
+    .field-group {
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pine-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    input, select, textarea {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(11, 40, 34, 0.15);
+      background: var(--bg-stone);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--pine-deep);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--pine-surface);
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-cube" viewBox="0 0 100 100"><polygon points="50,5 95,28 50,52 5,28" fill="#e8dfc8"/><polygon points="5,28 50,52 50,98 5,74" fill="#0b2822"/><polygon points="95,28 50,52 50,98 95,74" fill="#061814"/></svg>
+        <span class="brand-title">Oryktos<span>.</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="services.html">Services</a>
+        <a href="work.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn-primary">Initiate Project →</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <h1 style="font-size:44px; margin-bottom:12px;">Initiate Project Scoping</h1>
+    <p style="color:#8fa59f; font-size:17px; max-width:540px; margin:0 auto;">Submit your requirements directly to our engineering team. We reply within 24 hours.</p>
+  </div>
+
+  <div class="form-wrap">
+    <!-- Netlify Form -->
+    <form name="oryktos-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="oryktos-contact">
+      <p style="display:none;"><input name="bot-field"></p>
+
+      <div class="field-group">
+        <label>Your Name</label>
+        <input type="text" name="name" required placeholder="Jane Doe">
+      </div>
+
+      <div class="field-group">
+        <label>Business Email</label>
+        <input type="email" name="email" required placeholder="jane@company.com">
+      </div>
+
+      <div class="field-group">
+        <label>Primary Focus</label>
+        <select name="service" required>
+          <option value="headless-web">Headless Web & Next.js Architecture</option>
+          <option value="mobile-apps">Flutter / Cross-Platform Mobile</option>
+          <option value="paid-media">Performance Meta & Google Ads / CAPI</option>
+          <option value="ui-systems">Design System / Figma Tokens</option>
+          <option value="full-audit">Complete Technical & Growth Audit</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Estimated Monthly Budget</label>
+        <select name="budget">
+          <option value="1k-2.5k">$1,000 – $2,500</option>
+          <option value="2.5k-5k">$2,500 – $5,000</option>
+          <option value="5k-plus">$5,000+ (Enterprise)</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Project Details / Timeline</label>
+        <textarea name="details" rows="4" placeholder="Briefly describe your current bottlenecks and goals..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%; justify-content:center; padding:16px; font-size:15px; margin-top:10px;">
+        Submit Architecture Brief →
+      </button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 Oryktos Agency. All rights reserved.</div>
+        <div class="mono-font" style="color:var(--accent-mint);">READY FOR NETLIFY FORMS</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
