@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/style.css">
   <style>
     .page-header { background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%); color: #fff; padding: 80px 20px 60px; text-align: center; border-bottom: 1px solid var(--border-dark); }
-    .grid { max-width: 1200px; margin: 40px auto 80px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .grid { max-width: 1200px; margin: 40px auto 80px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; box-sizing: border-box; }
     .case-card { background: #fff; border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
     .card-preview { height: 160px; background: var(--pine-surface); display: flex; align-items: center; justify-content: center; color: var(--sand-dim); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; }
     .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -17,11 +17,11 @@
 </head>
 <body>
 
-  <!-- UNIVERSAL HEADER -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
-        <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
+        <img src="/logo.png" alt="Oryktos" class="brand-logo-img">
       </a>
       <nav class="desktop-nav">
         <a href="/">Overview</a>
@@ -37,8 +37,8 @@
     </div>
   </header>
 
-  <!-- MOBILE MENU OVERLAY -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-menu-overlay" id="mobileMenu" style="visibility: hidden; opacity: 0; pointer-events: none;">
     <nav class="mobile-links">
       <a href="/" onclick="toggleMenu()">Overview</a>
       <a href="/services/" onclick="toggleMenu()">Services</a>
@@ -46,9 +46,8 @@
       <a href="/about/" onclick="toggleMenu()">About</a>
       <a href="/contact/" onclick="toggleMenu()">Contact</a>
     </nav>
-    <div class="mobile-footer-actions">
-      <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
-      <div class="mono-font" style="font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">LATENCY: 0.04ms // ALL SYSTEMS NOMINAL</div>
+    <div style="margin-top: 32px;">
+      <a href="/contact/" class="nav-cta-btn" style="width:100%; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
     </div>
   </div>
 
@@ -95,7 +94,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-wrap">
-            <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
+            <img src="/logo.png" alt="Oryktos" class="footer-logo-img">
           </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
