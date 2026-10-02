@@ -4,25 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capabilities & Services — Oryktos</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/style.css">
+  
   <style>
-    .page-header { background-color: var(--pine-deep, #061814); color: #fff; padding: 80px 24px 70px; text-align: center; }
-    .content-wrap { max-width: 1100px; margin: 60px auto 100px; padding: 0 24px; }
-    .service-row { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding: 48px 0; border-bottom: 1px solid var(--border-light, rgba(11,40,34,0.08)); }
+    .page-header {
+      background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
+      color: #fff;
+      padding: 100px 24px 80px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .content-wrap {
+      max-width: 1100px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
     .service-row:last-child { border-bottom: none; }
-    .badge { font-size: 12px; font-weight: 700; color: var(--accent-mint, #2be4a7); background: var(--pine-surface, #0b2822); padding: 4px 10px; border-radius: 4px; width: fit-content; margin-bottom: 8px; }
-    @media (max-width: 768px) { .service-row { grid-template-columns: 1fr; gap: 20px; } }
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-mint);
+      background: var(--pine-surface);
+      padding: 4px 10px;
+      border-radius: 4px;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 768px) {
+      .service-row { grid-template-columns: 1fr; gap: 20px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
-        <svg class="brand-cube" width="32" height="32" style="width:32px; height:32px; flex-shrink:0;" viewBox="0 0 100 100">
-          <polygon points="50,5 95,28 50,52 5,28" fill="#e8dfc8"/>
-          <polygon points="5,28 50,52 50,98 5,74" fill="#0b2822"/>
-          <polygon points="95,28 50,52 50,98 95,74" fill="#061814"/>
-        </svg>
+        <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
         <span class="brand-title">Oryktos<span>.</span></span>
       </a>
       <nav class="nav-links">
@@ -88,8 +119,40 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-wrap">
+            <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
+            <div class="brand-title" style="font-size:22px;">Oryktos<span>.</span></div>
+          </div>
+          <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/work/">Case Studies</a></li>
+            <li><a href="/about/">About Agency</a></li>
+            <li><a href="/contact/">Contact & Scoping</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="/services/">Headless WordPress</a></li>
+            <li><a href="/services/">Next.js & React</a></li>
+            <li><a href="/services/">Flutter Mobile</a></li>
+            <li><a href="/services/">Meta & Google Ads</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="telemetry-box mono-font" id="telemetry-clock">INITIALIZING TELEMETRY...</div>
+        </div>
+      </div>
       <div class="footer-bottom">
         <div>© 2026 Oryktos Agency. All rights reserved.</div>
         <div class="mono-font" style="color:var(--accent-mint);"><a href="/contact/" style="color:inherit; text-decoration:none;">Book a Technical Scoping Call →</a></div>
