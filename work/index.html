@@ -4,118 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Selected Case Studies — Oryktos</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="/style.css">
-  
   <style>
-    .page-header {
-      background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
-      color: #fff;
-      padding: 80px 20px 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border-dark);
-      width: 100%;
-    }
-    .grid {
-      max-width: 1200px;
-      margin: 40px auto 80px;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      width: 100%;
-    }
-    .case-card {
-      background: #fff;
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-preview {
-      height: 160px;
-      background: var(--pine-surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--sand-dim);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-    .card-body {
-      padding: 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .metric-badge {
-      display: inline-block;
-      background: var(--bg-sand);
-      color: var(--pine-deep);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-top: 14px;
-      width: fit-content;
-    }
-    @media (max-width: 600px) {
-      .page-header h1 { font-size: 32px !important; }
-    }
+    .page-header { background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%); color: #fff; padding: 80px 20px 60px; text-align: center; border-bottom: 1px solid var(--border-dark); }
+    .grid { max-width: 1200px; margin: 40px auto 80px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .case-card { background: #fff; border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+    .card-preview { height: 160px; background: var(--pine-surface); display: flex; align-items: center; justify-content: center; color: var(--sand-dim); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; }
+    .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .metric-badge { display: inline-block; background: var(--bg-sand); color: var(--pine-deep); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; margin-top: 14px; width: fit-content; }
+    @media (max-width: 600px) { .page-header h1 { font-size: 32px !important; } }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- UNIVERSAL HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
         <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
-        <span class="brand-title">Oryktos<span>.</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="desktop-nav">
         <a href="/">Overview</a>
         <a href="/services/">Services</a>
         <a href="/work/" class="active">Case Studies</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </nav>
-      <a href="/contact/" class="btn-primary desktop-only-cta">Initiate Project →</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+      <a href="/contact/" class="nav-cta-btn desktop-cta">Initiate Project →</a>
+      <button class="mobile-toggle" id="mobileMenuBtn" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
-  <aside class="mobile-drawer" id="mobileDrawer">
-    <div>
-      <div class="drawer-header">
-        <div class="brand-title">Oryktos<span>.</span></div>
-        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="/" onclick="toggleMobileMenu()">Overview</a>
-        <a href="/services/" onclick="toggleMobileMenu()">Services</a>
-        <a href="/work/" class="active" onclick="toggleMobileMenu()">Case Studies</a>
-        <a href="/about/" onclick="toggleMobileMenu()">About</a>
-        <a href="/contact/" onclick="toggleMobileMenu()">Contact</a>
-      </nav>
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <nav class="mobile-links">
+      <a href="/" onclick="toggleMenu()">Overview</a>
+      <a href="/services/" onclick="toggleMenu()">Services</a>
+      <a href="/work/" class="active" onclick="toggleMenu()">Case Studies</a>
+      <a href="/about/" onclick="toggleMenu()">About</a>
+      <a href="/contact/" onclick="toggleMenu()">Contact</a>
+    </nav>
+    <div class="mobile-footer-actions">
+      <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
+      <div class="mono-font" style="font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">LATENCY: 0.04ms // ALL SYSTEMS NOMINAL</div>
     </div>
-    <div class="drawer-footer">
-      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
-    </div>
-  </aside>
+  </div>
 
   <div class="page-header">
     <h1 style="font-size:42px; margin-bottom:12px;">Engineering Case Studies</h1>
@@ -127,44 +62,40 @@
       <div class="card-preview mono-font">01 / VANGUARD LOGISTICS</div>
       <div class="card-body">
         <div>
-          <h3 style="font-size:20px; margin-bottom:8px;">Decoupled Freight Management Engine</h3>
-          <p style="color:var(--text-muted); font-size:14px;">Replaced legacy slow PHP setup with headless Next.js & Go microservices. Accelerated load times from 4.8s to 0.4s.</p>
+          <h3 style="font-size:20px; margin-bottom:8px;">Decoupled Freight Engine</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Replaced legacy PHP setup with headless Next.js. Accelerated load times from 4.8s to 0.4s.</p>
         </div>
         <div class="metric-badge mono-font">+310% Conversion Uplift</div>
       </div>
     </div>
-
     <div class="case-card">
       <div class="card-preview mono-font">02 / AURA DERMATOLOGY</div>
       <div class="card-body">
         <div>
-          <h3 style="font-size:20px; margin-bottom:8px;">Direct-to-Patient Booking Ecosystem</h3>
-          <p style="color:var(--text-muted); font-size:14px;">Configured full-funnel Meta Ads CAPI server tracking and an appointment booking engine with zero drop-off.</p>
+          <h3 style="font-size:20px; margin-bottom:8px;">Direct-to-Patient Booking</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Configured full-funnel Meta Ads CAPI server tracking and a booking engine with zero drop-off.</p>
         </div>
         <div class="metric-badge mono-font">4.2x ROAS on Meta Spend</div>
       </div>
     </div>
-
     <div class="case-card">
       <div class="card-preview mono-font">03 / MUCHAAN RESORTS</div>
       <div class="card-body">
         <div>
-          <h3 style="font-size:20px; margin-bottom:8px;">Boutique Luxury Hospitality Experience</h3>
-          <p style="color:var(--text-muted); font-size:14px;">Custom high-contrast editorial responsive theme combining regional aesthetic textures with instantaneous booking checkout.</p>
+          <h3 style="font-size:20px; margin-bottom:8px;">Boutique Luxury Hospitality</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Custom high-contrast editorial theme combining regional textures with instant checkout.</p>
         </div>
         <div class="metric-badge mono-font">100/100 Core Web Vitals</div>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-grid">
         <div>
           <div class="footer-brand-wrap">
             <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
-            <div class="brand-title" style="font-size:22px;">Oryktos<span>.</span></div>
           </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
@@ -193,7 +124,6 @@
       </div>
       <div class="footer-bottom">
         <div>© 2026 Oryktos Agency. All rights reserved.</div>
-        <div class="mono-font" style="color:var(--accent-mint);"><a href="/contact/" style="color:inherit; text-decoration:none;">Submit Your RFQ →</a></div>
       </div>
     </div>
   </footer>
