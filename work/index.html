@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Case Studies — Oryktos</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-header {
+      background-color: var(--pine-deep);
+      color: #fff;
+      padding: 80px 24px 70px;
+      text-align: center;
+    }
+    .grid {
+      max-width: 1200px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+    .case-card {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-preview {
+      height: 200px;
+      background: var(--pine-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sand-dim);
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .card-body {
+      padding: 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .metric-badge {
+      display: inline-block;
+      background: var(--bg-sand);
+      color: var(--pine-deep);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link">
+        <svg class="brand-cube" viewBox="0 0 100 100"><polygon points="50,5 95,28 50,52 5,28" fill="#e8dfc8"/><polygon points="5,28 50,52 50,98 5,74" fill="#0b2822"/><polygon points="95,28 50,52 50,98 95,74" fill="#061814"/></svg>
+        <span class="brand-title">Oryktos<span>.</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="services.html">Services</a>
+        <a href="work.html" class="active">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn-primary">Initiate Project →</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <h1 style="font-size:44px; margin-bottom:12px;">Engineering Case Studies</h1>
+    <p style="color:#8fa59f; font-size:17px; max-width:600px; margin:0 auto;">Verified client impact across high-load applications and acquisition campaigns.</p>
+  </div>
+
+  <div class="grid">
+    <div class="case-card">
+      <div class="card-preview">01 / VANGUARD LOGISTICS</div>
+      <div class="card-body">
+        <div>
+          <h3 style="font-size:22px; margin-bottom:8px;">Decoupled Freight Management Engine</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Replaced a legacy slow PHP setup with headless Next.js & Go microservices. Accelerated load times from 4.8s to 0.4s.</p>
+        </div>
+        <div class="metric-badge mono-font">+310% Conversion Uplift</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="card-preview">02 / AURA DERMATOLOGY</div>
+      <div class="card-body">
+        <div>
+          <h3 style="font-size:22px; margin-bottom:8px;">Direct-to-Patient Booking Ecosystem</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Configured full-funnel Meta Ads CAPI server tracking and an appointment booking engine with zero drop-off.</p>
+        </div>
+        <div class="metric-badge mono-font">4.2x ROAS on Meta Spend</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="card-preview">03 / MUCHAAN SANCTUARY</div>
+      <div class="card-body">
+        <div>
+          <h3 style="font-size:22px; margin-bottom:8px;">Boutique Luxury Hospitality Experience</h3>
+          <p style="color:var(--text-muted); font-size:14px;">Custom high-contrast editorial responsive theme combining regional aesthetic textures with instantaneous booking checkout.</p>
+        </div>
+        <div class="metric-badge mono-font">100/100 Core Web Vitals</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 Oryktos Agency. All rights reserved.</div>
+        <div class="mono-font" style="color:var(--accent-mint);"><a href="contact.html" style="color:inherit; text-decoration:none;">Submit Your RFQ →</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
