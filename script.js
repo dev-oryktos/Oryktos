@@ -1,4 +1,4 @@
-// Live Telemetry Clock (UTC + IST + Node Status)
+// Live Telemetry Clock (UTC + Node Status)
 function updateClock() {
   const clockEl = document.getElementById('telemetry-clock');
   if (!clockEl) return;
@@ -28,4 +28,26 @@ function runBenchmark() {
       terminal.scrollTop = terminal.scrollHeight;
     }, (idx + 1) * 350);
   });
+}
+
+// Mobile Menu Navigation Drawer Controls
+function toggleMobileMenu() {
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('mobileDrawerOverlay');
+  const btn = document.getElementById('mobileMenuBtn');
+  
+  if (!drawer || !overlay) return;
+  
+  const isOpen = drawer.classList.contains('active');
+  if (isOpen) {
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+    if (btn) btn.classList.remove('open');
+    document.body.style.overflow = '';
+  } else {
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+    if (btn) btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 }
