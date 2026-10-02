@@ -4,97 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Capabilities & Services — Oryktos</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="/style.css">
-  
   <style>
-    .page-header {
-      background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
-      color: #fff;
-      padding: 80px 20px 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border-dark);
-      width: 100%;
-    }
-    .content-wrap {
-      max-width: 1100px;
-      margin: 40px auto 80px;
-      padding: 0 20px;
-      width: 100%;
-    }
-    .service-row {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 36px;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
+    .page-header { background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%); color: #fff; padding: 80px 20px 60px; text-align: center; border-bottom: 1px solid var(--border-dark); }
+    .content-wrap { max-width: 1100px; margin: 40px auto 80px; padding: 0 20px; }
+    .service-row { display: grid; grid-template-columns: 1fr 2fr; gap: 36px; padding: 40px 0; border-bottom: 1px solid var(--border-light); }
     .service-row:last-child { border-bottom: none; }
-    .badge {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent-mint);
-      background: var(--pine-surface);
-      padding: 4px 10px;
-      border-radius: 4px;
-      width: fit-content;
-      margin-bottom: 8px;
-    }
-    @media (max-width: 768px) {
-      .service-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
-      .page-header h1 { font-size: 32px !important; }
-    }
+    .badge { font-size: 11px; font-weight: 700; color: var(--accent-mint); background: var(--pine-surface); padding: 4px 10px; border-radius: 4px; width: fit-content; margin-bottom: 8px; }
+    @media (max-width: 768px) { .service-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; } .page-header h1 { font-size: 32px !important; } }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- UNIVERSAL HEADER -->
   <header class="site-header">
     <div class="nav-container">
       <a href="/" class="brand-link">
         <img src="/logo.png" alt="Oryktos" class="brand-logo-img" onerror="this.style.display='none'">
-        <span class="brand-title">Oryktos<span>.</span></span>
       </a>
-      <nav class="nav-links">
+      <nav class="desktop-nav">
         <a href="/">Overview</a>
         <a href="/services/" class="active">Services</a>
         <a href="/work/">Case Studies</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
       </nav>
-      <a href="/contact/" class="btn-primary desktop-only-cta">Initiate Project →</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+      <a href="/contact/" class="nav-cta-btn desktop-cta">Initiate Project →</a>
+      <button class="mobile-toggle" id="mobileMenuBtn" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
-  <aside class="mobile-drawer" id="mobileDrawer">
-    <div>
-      <div class="drawer-header">
-        <div class="brand-title">Oryktos<span>.</span></div>
-        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
-      </div>
-      <nav class="drawer-links">
-        <a href="/" onclick="toggleMobileMenu()">Overview</a>
-        <a href="/services/" class="active" onclick="toggleMobileMenu()">Services</a>
-        <a href="/work/" onclick="toggleMobileMenu()">Case Studies</a>
-        <a href="/about/" onclick="toggleMobileMenu()">About</a>
-        <a href="/contact/" onclick="toggleMobileMenu()">Contact</a>
-      </nav>
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <nav class="mobile-links">
+      <a href="/" onclick="toggleMenu()">Overview</a>
+      <a href="/services/" class="active" onclick="toggleMenu()">Services</a>
+      <a href="/work/" onclick="toggleMenu()">Case Studies</a>
+      <a href="/about/" onclick="toggleMenu()">About</a>
+      <a href="/contact/" onclick="toggleMenu()">Contact</a>
+    </nav>
+    <div class="mobile-footer-actions">
+      <a href="/contact/" class="nav-cta-btn" style="text-align:center; justify-content:center; padding:16px; font-size:15px;" onclick="toggleMenu()">Initiate Project →</a>
+      <div class="mono-font" style="font-size:11px; color:#6b7f79; text-align:center; margin-top:8px;">LATENCY: 0.04ms // ALL SYSTEMS NOMINAL</div>
     </div>
-    <div class="drawer-footer">
-      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
-    </div>
-  </aside>
+  </div>
 
   <div class="page-header">
     <h1 style="font-size:42px; margin-bottom:12px;">Engineering & Growth Services</h1>
@@ -116,7 +71,6 @@
         </ul>
       </div>
     </div>
-
     <div class="service-row">
       <div>
         <div class="badge mono-font">PILLAR 02</div>
@@ -131,31 +85,28 @@
         </ul>
       </div>
     </div>
-
     <div class="service-row">
       <div>
         <div class="badge mono-font">PILLAR 03</div>
-        <h2 style="font-size:24px;">Paid Media & Server Tracking</h2>
+        <h2 style="font-size:24px;">Paid Media & Tracking</h2>
       </div>
       <div>
         <p style="color:var(--text-muted); font-size:15px; margin-bottom:14px;">Ensure full attribution for your advertising spend without signal loss caused by browser ad-blockers and iOS privacy restrictions.</p>
         <ul style="color:var(--text-dark); font-weight:500; line-height:2; padding-left:20px; font-size:14px;">
           <li>Meta Conversions API (CAPI) server-to-server relay</li>
           <li>Google Tag Manager server containers</li>
-          <li>Granular ROAS and CAC attribution tracking</li>
+          <li>Granular ROAS tracking</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-grid">
         <div>
           <div class="footer-brand-wrap">
             <img src="/logo.png" alt="Oryktos" class="footer-logo-img" onerror="this.style.display='none'">
-            <div class="brand-title" style="font-size:22px;">Oryktos<span>.</span></div>
           </div>
           <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
         </div>
@@ -175,7 +126,7 @@
             <li><a href="/services/">Headless WordPress</a></li>
             <li><a href="/services/">Next.js & React</a></li>
             <li><a href="/services/">Flutter Mobile</a></li>
-            <li><a href="/services/">Meta & Google Ads</a></li>
+            <li><a href="/services/">Meta Ads</a></li>
           </ul>
         </div>
         <div>
@@ -184,7 +135,6 @@
       </div>
       <div class="footer-bottom">
         <div>© 2026 Oryktos Agency. All rights reserved.</div>
-        <div class="mono-font" style="color:var(--accent-mint);"><a href="/contact/" style="color:inherit; text-decoration:none;">Book a Technical Scoping Call →</a></div>
       </div>
     </div>
   </footer>
