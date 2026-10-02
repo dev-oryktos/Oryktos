@@ -3,82 +3,551 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Oryktos — Technical Manifesto</title>
+  <title>About & Manifesto — Oryktos</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/style.css">
+
   <style>
-    .page-header {
-      background-color: var(--pine-deep);
-      color: #fff;
-      padding: 80px 24px 70px;
-      text-align: center;
+    :root {
+      --pine-deep: #061814;
+      --pine-surface: #0b2822;
+      --pine-elevated: #11352e;
+      --sand-bone: #e8dfc8;
+      --sand-dim: #c5bba6;
+      --accent-mint: #2be4a7;
+      --stone-bg: #faf8f5;
+      --border-subtle: rgba(232, 223, 200, 0.12);
+      --border-stone: rgba(11, 40, 34, 0.08);
+      --text-muted: #6b7f79;
     }
-    .manifesto {
-      max-width: 820px;
-      margin: 60px auto 100px;
-      padding: 0 24px;
-      font-size: 18px;
+
+    body {
+      background-color: var(--stone-bg);
       color: var(--pine-deep);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* EDITORIAL HEADER */
+    .about-header {
+      background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
+      color: #faf8f5;
+      padding: 120px 24px 100px;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .about-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(232, 223, 200, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 223, 200, 0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(11, 40, 34, 0.8);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 16px;
+      border-radius: 999px;
+      color: var(--sand-bone);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .about-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 24px;
+    }
+
+    .about-header h1 em {
+      font-style: normal;
+      color: var(--sand-bone);
+    }
+
+    .about-header p {
+      font-size: 19px;
+      color: #8fa59f;
+      line-height: 1.65;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    /* MANIFESTO NARRATIVE */
+    .narrative-wrap {
+      max-width: 1040px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+
+    .narrative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .narrative-sticky {
+      position: sticky;
+      top: 100px;
+    }
+
+    .brand-mark-card {
+      background: var(--pine-deep);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 36px 30px;
+      color: var(--sand-bone);
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(6, 24, 20, 0.08);
+    }
+
+    .brand-mark-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .brand-origin-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .brand-origin-desc {
+      font-size: 13px;
+      color: #8fa59f;
+      line-height: 1.6;
+    }
+
+    .narrative-body h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: var(--pine-deep);
+    }
+
+    .narrative-body p {
+      font-size: 16px;
+      color: #3b4e49;
       line-height: 1.8;
+      margin-bottom: 24px;
     }
-    .manifesto h2 {
-      font-size: 30px;
-      margin: 40px 0 16px;
+
+    .quote-pull {
+      background: #f2eee3;
+      border-left: 3px solid var(--pine-surface);
+      border-radius: 0 14px 14px 0;
+      padding: 24px 28px;
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--pine-deep);
+      margin: 36px 0;
     }
-    .quote-box {
-      border-left: 3px solid var(--accent-mint);
-      padding: 16px 24px;
-      background: var(--bg-sand);
-      margin: 30px 0;
-      font-style: italic;
+
+    /* CORE ENGINEERING TENETS */
+    .tenets-section {
+      background: var(--pine-deep);
+      color: #faf8f5;
+      padding: 100px 24px;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .tenets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 50px;
+    }
+
+    .tenet-card {
+      background: var(--pine-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tenet-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(43, 228, 167, 0.4);
+    }
+
+    .tenet-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-mint);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .tenet-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--sand-bone);
+      margin-bottom: 12px;
+    }
+
+    .tenet-desc {
+      font-size: 14px;
+      color: #8fa59f;
+      line-height: 1.65;
+    }
+
+    /* STACK OPINION MATRIX */
+    .stack-section {
+      max-width: 1040px;
+      margin: 100px auto;
+      padding: 0 24px;
+    }
+
+    .stack-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 36px;
+      background: #ffffff;
+      border: 1px solid var(--border-stone);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(6, 24, 20, 0.03);
+    }
+
+    .stack-table th, .stack-table td {
+      padding: 20px 24px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .stack-table th {
+      background: var(--pine-surface);
+      color: var(--sand-bone);
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .stack-table tr {
+      border-bottom: 1px solid var(--border-stone);
+    }
+    .stack-table tr:last-child { border-bottom: none; }
+
+    .tag-stack-pro {
+      display: inline-block;
+      background: rgba(43, 228, 167, 0.12);
+      color: #0b4a3a;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .tag-stack-dep {
+      display: inline-block;
+      background: #f4ede9;
+      color: #85534c;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* CTA FOOTER STRIP */
+    .about-cta {
+      background: #f2eee3;
+      border-radius: 24px;
+      padding: 60px 48px;
+      text-align: center;
+      max-width: 980px;
+      margin: 0 auto 100px;
+      border: 1px solid var(--border-stone);
+    }
+
+    .about-cta h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      color: var(--pine-deep);
+      margin: 0 0 14px;
+    }
+
+    .about-cta p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 540px;
+      margin: 0 auto 30px;
+    }
+
+    @media (max-width: 850px) {
+      .narrative-grid { grid-template-columns: 1fr; gap: 40px; }
+      .narrative-sticky { position: static; }
+      .tenets-grid { grid-template-columns: 1fr; }
+      .about-cta { padding: 40px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- STICKY SITE HEADER (WITH REAL LOGO) -->
   <header class="site-header">
     <div class="nav-container">
-      <a href="index.html" class="brand-link">
-        <svg class="brand-cube" viewBox="0 0 100 100"><polygon points="50,5 95,28 50,52 5,28" fill="#e8dfc8"/><polygon points="5,28 50,52 50,98 5,74" fill="#0b2822"/><polygon points="95,28 50,52 50,98 95,74" fill="#061814"/></svg>
+      <a href="/" class="brand-link">
+        <img 
+          src="/ORYKTOS.png" 
+          alt="Oryktos Mark" 
+          width="34" 
+          height="34" 
+          style="width: 34px; height: 34px; object-fit: contain; border-radius: 6px; display: block;"
+        >
         <span class="brand-title">Oryktos<span>.</span></span>
       </a>
       <nav class="nav-links">
-        <a href="index.html">Overview</a>
-        <a href="services.html">Services</a>
-        <a href="work.html">Case Studies</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Overview</a>
+        <a href="/services/">Services</a>
+        <a href="/work/">Case Studies</a>
+        <a href="/about/" class="active">About</a>
+        <a href="/contact/">Contact</a>
       </nav>
-      <a href="contact.html" class="btn-primary">Initiate Project →</a>
+      <a href="/contact/" class="btn-primary">Initiate Project →</a>
     </div>
   </header>
 
-  <div class="page-header">
-    <h1 style="font-size:44px; margin-bottom:12px;">Engineered Without Compromise</h1>
-    <p style="color:#8fa59f; font-size:17px;">The philosophy behind the Oryktos digital practice.</p>
-  </div>
+  <!-- HERO SECTION -->
+  <section class="about-header">
+    <div class="header-inner">
+      <div class="about-badge">
+        THE ORYKTOS PRACTICE & MANIFESTO
+      </div>
+      <h1>We Build Systems for Brands That Cannot Afford <em>Compromise.</em></h1>
+      <p>Oryktos is a digital engineering and growth studio. We bridge the gap between architectural-grade development and aggressive conversion science.</p>
+    </div>
+  </section>
 
-  <div class="manifesto">
-    <p>Oryktos was founded on a simple realization: traditional agency workflows are fractured. Designers produce prototypes that don't scale. Developers write code without understanding marketing funnels. Marketers buy ads without understanding server caching.</p>
+  <!-- THE NARRATIVE & ORIGIN -->
+  <section class="narrative-wrap">
+    <div class="narrative-grid">
+      <!-- SIDEBAR BRAND ORIGIN CARD -->
+      <aside class="narrative-sticky">
+        <div class="brand-mark-card">
+          <img src="/ORYKTOS.png" alt="Oryktos Cube Icon">
+          <div class="brand-origin-title">The Split Cube</div>
+          <p class="brand-origin-desc">
+            Named after the Greek <em>Oryktós</em> (ὀρυκτός — hewn from rock, extracted with intent). The split-cube rabbit mark represents mathematical balance: precision geometry on one face, kinetic growth on the other.
+          </p>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-mint);">
+            EST. 2026 // INDEPENDENT
+          </div>
+        </div>
+      </aside>
 
-    <div class="quote-box">
-      "We fuse technical architecture with ergonomics. Clean code isn't an afterthought—it is the foundation of high conversion rates and long-term brand equity."
+      <!-- MAIN MANIFESTO BODY -->
+      <article class="narrative-body">
+        <h2>The Industry Has a Latency Problem.</h2>
+        <p>
+          Most agencies operate on an assembly line of compromises. A design team sketches layout prototypes in Figma without profiling database query complexity. Developers bundle 50+ plugins onto shared hosting. Meanwhile, the performance team pours thousands into ad traffic that lands on bloated, 4-second mobile pages.
+        </p>
+        <p>
+          The result is predictable: <strong>wasted ad spend, severe tracking blindspots, high bounce rates, and brittle infrastructure</strong> that fractures under traffic surges.
+        </p>
+
+        <div class="quote-pull">
+          "Speed is not an aesthetic embellishment. In digital commerce and enterprise SaaS, sub-second latency is the fundamental baseline of trust and conversion."
+        </div>
+
+        <h2>Architectural Autonomy.</h2>
+        <p>
+          At Oryktos, we do not build websites using generic page builders or off-the-shelf commercial themes. We architect <strong>decoupled systems</strong>: lightweight, headless web platforms, cross-platform mobile apps in clean-architecture Flutter, and server-side conversion telemetry (Meta CAPI & GTM Server Containers).
+        </p>
+        <p>
+          Clients work directly with senior architects and growth engineers. No intermediaries, no junior handoffs, and no obfuscation.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CORE ENGINEERING TENETS -->
+  <section class="tenets-section">
+    <div class="section-inner">
+      <div style="text-align: center; max-width: 620px; margin: 0 auto;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent-mint); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;">
+          OUR OPERATIONAL CODE
+        </div>
+        <h2 style="font-family:'Syne',sans-serif; font-size:36px; margin:0 0 12px; color:#faf8f5;">
+          The Non-Negotiable Standards
+        </h2>
+        <p style="color:#8fa59f; font-size:15px; margin:0;">
+          Every line of code and ad configuration delivered by Oryktos adheres to these foundational rules.
+        </p>
+      </div>
+
+      <div class="tenets-grid">
+        <div class="tenet-card">
+          <div class="tenet-num">RULE_01</div>
+          <div class="tenet-title">Sub-500ms Edge TTFB</div>
+          <div class="tenet-desc">Global CDN replication and static pre-rendering ensure your users experience instantaneous responses regardless of their device or location.</div>
+        </div>
+
+        <div class="tenet-card">
+          <div class="tenet-num">RULE_02</div>
+          <div class="tenet-title">100% Server Attribution</div>
+          <div class="tenet-desc">Browser-level pixels are obsolete. We relay conversion signals directly from edge servers via Meta CAPI and Google Tag Manager to bypass ad blockers.</div>
+        </div>
+
+        <div class="tenet-card">
+          <div class="tenet-num">RULE_03</div>
+          <div class="tenet-title">Zero Middleware Bloat</div>
+          <div class="tenet-desc">We eliminate extraneous dependencies. Clean HTML5 semantics, optimized CSS design tokens, and modular components built for long-term scalability.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK OPINION MATRIX -->
+  <section class="stack-section">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--pine-surface); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px; font-weight:700;">
+        TECHNOLOGY POSITION
+      </div>
+      <h2 style="font-family:'Syne',sans-serif; font-size:32px; color:var(--pine-deep); margin:0;">
+        What We Deploy vs. What We Reject
+      </h2>
     </div>
 
-    <h2>Our Core Tenets</h2>
-    <p><strong>1. Sub-Second Everything:</strong> Speed is a feature. If a web platform doesn't load in under a second on mobile, it is costing you business. We build with lightweight, compiled tech stacks.</p>
-    <br>
-    <p><strong>2. Direct Lines to Engineers:</strong> No account managers or middle layers. Clients communicate directly with the technical engineers and strategists building their systems.</p>
-    <br>
-    <p><strong>3. Transparent Telemetry:</strong> Every number is verified. From Core Web Vitals to ROAS on Google and Meta campaigns, we provide straightforward analytics dashboards.</p>
-  </div>
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>What Oryktos Deploys</th>
+          <th>What We Actively Deprecate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Web Layer</strong></td>
+          <td><span class="tag-stack-pro">Next.js / Astro / Headless WP</span></td>
+          <td><span class="tag-stack-dep">Monolithic WP Themes / Elementor</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mobile Layer</strong></td>
+          <td><span class="tag-stack-pro">Flutter / Dart (Clean Architecture)</span></td>
+          <td><span class="tag-stack-dep">Webview Hybrid Wrappers</span></td>
+        </tr>
+        <tr>
+          <td><strong>Attribution</strong></td>
+          <td><span class="tag-stack-pro">Server-Side CAPI / Edge GTM</span></td>
+          <td><span class="tag-stack-dep">Client-Side JS Pixel Only</span></td>
+        </tr>
+        <tr>
+          <td><strong>Styling / UI</strong></td>
+          <td><span class="tag-stack-pro">Tailwind CSS / Figma Design Tokens</span></td>
+          <td><span class="tag-stack-dep">Third-party mega CSS frameworks</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- CALL TO ACTION -->
+  <section class="about-cta">
+    <h3>Have a Project Requiring Architectural Precision?</h3>
+    <p>We review technical briefs within 24 hours. Speak directly to an engineering lead about your next build.</p>
+    <a href="/contact/" class="btn-primary" style="padding: 14px 32px; font-size: 15px;">
+      Initiate Technical Scoping →
+    </a>
+  </section>
+
+  <!-- ARCHITECTURAL FOOTER (WITH REAL LOGO) -->
   <footer class="site-footer">
     <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+            <img 
+              src="/ORYKTOS.png" 
+              alt="Oryktos Logo" 
+              width="32" 
+              height="32" 
+              style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;"
+            >
+            <div class="brand-title" style="font-size:22px; color:var(--sand-bone);">
+              Oryktos<span>.</span>
+            </div>
+          </div>
+          <p class="footer-tagline">Architectural digital agency specializing in decoupled web engineering, UI/UX systems, and conversion science.</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/work/">Case Studies</a></li>
+            <li><a href="/about/" style="color:var(--accent-mint); font-weight:600;">About Agency</a></li>
+            <li><a href="/contact/">Contact & Scoping</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="/services/">Headless WordPress</a></li>
+            <li><a href="/services/">Next.js & React</a></li>
+            <li><a href="/services/">Flutter Mobile</a></li>
+            <li><a href="/services/">Meta & Google Ads</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="telemetry-box mono-font" id="telemetry-clock">INITIALIZING TELEMETRY...</div>
+        </div>
+      </div>
+      
       <div class="footer-bottom">
         <div>© 2026 Oryktos Agency. All rights reserved.</div>
-        <div class="mono-font" style="color:var(--accent-mint);"><a href="contact.html" style="color:inherit; text-decoration:none;">Talk With Our Engineers →</a></div>
+        <div class="mono-font" style="color:var(--accent-mint);">READY FOR NETLIFY CI/CD</div>
       </div>
     </div>
   </footer>
