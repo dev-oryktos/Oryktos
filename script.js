@@ -2,30 +2,25 @@
 // ORYKTOS DIGITAL PRACTICE - CORE ENGINE JS
 // ==========================================
 
-// 1. Mobile Menu Toggle (Handles both trigger buttons and link clicks)
+// 1. Mobile Menu Toggle
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('mobileMenuBtn');
-  if (!menu) return;
+  if (!menu || !btn) return;
 
   const isOpen = menu.classList.contains('open');
   if (isOpen) {
     menu.classList.remove('open');
-    if (btn) btn.classList.remove('is-open');
+    btn.classList.remove('is-open');
     document.body.style.overflow = '';
   } else {
     menu.classList.add('open');
-    if (btn) btn.classList.add('is-open');
+    btn.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
 }
 
-// Fallback compatibility alias if legacy markup calls toggleMobileMenu()
-function toggleMobileMenu() {
-  toggleMenu();
-}
-
-// 2. Live Telemetry Clock (UTC + Status Relay)
+// 2. Live Telemetry Clock (UTC + Status)
 function updateClock() {
   const clockEl = document.getElementById('telemetry-clock');
   if (!clockEl) return;
@@ -36,7 +31,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// 3. Synthetic Benchmark Runner (Homepage & Capabilities)
+// 3. Synthetic Benchmark Runner (Homepage & Services)
 function runBenchmark() {
   const terminal = document.getElementById('terminal-log');
   if (!terminal) return;
@@ -58,14 +53,14 @@ function runBenchmark() {
   });
 }
 
-// 4. Auto-close mobile drawer when window resizes back to desktop
+// 4. Auto-close mobile menu on desktop resize
 window.addEventListener('resize', () => {
   if (window.innerWidth > 900) {
     const menu = document.getElementById('mobileMenu');
     const btn = document.getElementById('mobileMenuBtn');
     if (menu && menu.classList.contains('open')) {
       menu.classList.remove('open');
-      if (btn) btn.classList.remove('is-open');
+      btn.classList.remove('is-open');
       document.body.style.overflow = '';
     }
   }
