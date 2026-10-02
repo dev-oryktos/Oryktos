@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>About & Manifesto — Oryktos</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,10 +15,11 @@
     .about-header {
       background: radial-gradient(circle at 50% 0%, #0d382f 0%, var(--pine-deep) 70%);
       color: #faf8f5;
-      padding: 120px 24px 100px;
+      padding: 90px 20px 70px;
       text-align: center;
       position: relative;
       border-bottom: 1px solid var(--border-dark);
+      width: 100%;
     }
     .header-inner {
       position: relative;
@@ -39,20 +40,20 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .about-header h1 {
-      font-size: clamp(38px, 5.5vw, 68px);
+      font-size: clamp(32px, 5vw, 68px);
       font-weight: 800;
       line-height: 1.1;
-      margin: 0 0 24px;
+      margin: 0 0 20px;
     }
     .about-header h1 em {
       font-style: normal;
       color: var(--sand-dim);
     }
     .about-header p {
-      font-size: 19px;
+      font-size: 17px;
       color: #8fa59f;
       line-height: 1.65;
       max-width: 660px;
@@ -60,13 +61,14 @@
     }
     .narrative-wrap {
       max-width: 1040px;
-      margin: 80px auto;
-      padding: 0 24px;
+      margin: 60px auto;
+      padding: 0 20px;
+      width: 100%;
     }
     .narrative-grid {
       display: grid;
       grid-template-columns: 1fr 1.6fr;
-      gap: 64px;
+      gap: 48px;
       align-items: start;
     }
     .narrative-sticky {
@@ -77,47 +79,47 @@
       background: var(--pine-deep);
       border: 1px solid var(--border-dark);
       border-radius: 20px;
-      padding: 36px 30px;
+      padding: 30px 24px;
       color: var(--sand-dim);
       text-align: center;
-      box-shadow: 0 16px 40px rgba(6, 24, 20, 0.08);
     }
     .brand-mark-card img {
-      width: 72px;
-      height: 72px;
+      width: 64px;
+      height: 64px;
       object-fit: contain;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       display: inline-block;
     }
     .narrative-body h2 {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 800;
-      margin: 0 0 20px;
+      margin: 0 0 16px;
       color: var(--pine-deep);
     }
     .narrative-body p {
-      font-size: 16px;
+      font-size: 15px;
       color: #3b4e49;
       line-height: 1.8;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .quote-pull {
       background: #f2eee3;
       border-left: 3px solid var(--pine-surface);
-      border-radius: 0 14px 14px 0;
-      padding: 24px 28px;
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--pine-deep);
-      margin: 36px 0;
+      margin: 28px 0;
     }
     .tenets-section {
       background: var(--pine-deep);
       color: #faf8f5;
-      padding: 100px 24px;
+      padding: 80px 20px;
       border-top: 1px solid var(--border-dark);
       border-bottom: 1px solid var(--border-dark);
+      width: 100%;
     }
     .section-inner {
       max-width: 1140px;
@@ -126,37 +128,35 @@
     .tenets-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 50px;
+      gap: 20px;
+      margin-top: 40px;
     }
     .tenet-card {
       background: var(--pine-surface);
       border: 1px solid var(--border-dark);
       border-radius: 18px;
-      padding: 36px 28px;
-      transition: transform 0.2s ease;
+      padding: 28px 24px;
     }
-    .tenet-card:hover { transform: translateY(-3px); }
     .tenet-num {
       font-family: var(--font-mono);
       font-size: 12px;
       color: var(--accent-mint);
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .tenet-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--sand-dim);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .tenet-desc {
       font-size: 14px;
       color: #8fa59f;
-      line-height: 1.65;
+      line-height: 1.6;
     }
     @media (max-width: 850px) {
-      .narrative-grid { grid-template-columns: 1fr; gap: 40px; }
+      .narrative-grid { grid-template-columns: 1fr; gap: 32px; }
       .narrative-sticky { position: static; }
       .tenets-grid { grid-template-columns: 1fr; }
     }
@@ -178,15 +178,39 @@
         <a href="/about/" class="active">About</a>
         <a href="/contact/">Contact</a>
       </nav>
-      <a href="/contact/" class="btn-primary">Initiate Project →</a>
+      <a href="/contact/" class="btn-primary desktop-only-cta">Initiate Project →</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-header">
+        <div class="brand-title">Oryktos<span>.</span></div>
+        <button class="drawer-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      </div>
+      <nav class="drawer-links">
+        <a href="/" onclick="toggleMobileMenu()">Overview</a>
+        <a href="/services/" onclick="toggleMobileMenu()">Services</a>
+        <a href="/work/" onclick="toggleMobileMenu()">Case Studies</a>
+        <a href="/about/" class="active" onclick="toggleMobileMenu()">About</a>
+        <a href="/contact/" onclick="toggleMobileMenu()">Contact</a>
+      </nav>
+    </div>
+    <div class="drawer-footer">
+      <a href="/contact/" class="btn-primary" style="width:100%;" onclick="toggleMobileMenu()">Initiate Project →</a>
+    </div>
+  </aside>
+
   <section class="about-header">
     <div class="header-inner">
-      <div class="about-badge">
-        THE ORYKTOS PRACTICE & MANIFESTO
-      </div>
+      <div class="about-badge">THE ORYKTOS PRACTICE & MANIFESTO</div>
       <h1>We Build Systems for Brands That Cannot Afford <em>Compromise.</em></h1>
       <p>Oryktos is a digital engineering and growth studio. We bridge the gap between architectural-grade development and aggressive conversion science.</p>
     </div>
@@ -197,11 +221,11 @@
       <aside class="narrative-sticky">
         <div class="brand-mark-card">
           <img src="/logo.png" alt="Oryktos Logo" onerror="this.style.display='none'">
-          <div style="font-family:var(--font-heading); font-size:20px; font-weight:700; margin-bottom:8px;">The Split Cube</div>
+          <div style="font-family:var(--font-heading); font-size:18px; font-weight:700; margin-bottom:8px;">The Split Cube</div>
           <p style="font-size:13px; color:#8fa59f; line-height:1.6;">
             Named after the Greek <em>Oryktós</em> (ὀρυκτός — hewn from rock, extracted with intent). The geometric mark represents mathematical balance: precision geometry on one face, kinetic growth on the other.
           </p>
-          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border-dark); font-family:var(--font-mono); font-size:11px; color:var(--accent-mint);">
+          <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border-dark); font-family:var(--font-mono); font-size:11px; color:var(--accent-mint);">
             EST. 2026 // INDEPENDENT
           </div>
         </div>
@@ -217,7 +241,7 @@
         </div>
 
         <h2>Architectural Autonomy.</h2>
-        <p>At Oryktos, we do not build websites using generic page builders or off-the-shelf commercial themes. We architect <strong>decoupled systems</strong>: lightweight, headless web platforms, cross-platform mobile apps in clean-architecture Flutter, and server-side conversion telemetry (Meta CAPI & GTM Server Containers).</p>
+        <p>At Oryktos, we do not build websites using generic page builders or off-the-shelf commercial themes. We architect <strong>decoupled systems</strong>: lightweight, headless web platforms, cross-platform mobile apps in clean-architecture Flutter, and server-side conversion telemetry.</p>
         <p>Clients work directly with senior architects and growth engineers. No intermediaries, no junior handoffs, and no obfuscation.</p>
       </article>
     </div>
@@ -226,34 +250,29 @@
   <section class="tenets-section">
     <div class="section-inner">
       <div style="text-align:center; max-width:620px; margin:0 auto;">
-        <div style="font-family:var(--font-mono); font-size:11px; color:var(--accent-mint); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;">
+        <div style="font-family:var(--font-mono); font-size:11px; color:var(--accent-mint); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">
           OUR OPERATIONAL CODE
         </div>
-        <h2 style="font-size:36px; margin:0 0 12px; color:#faf8f5;">
-          The Non-Negotiable Standards
-        </h2>
-        <p style="color:#8fa59f; font-size:15px; margin:0;">
-          Every line of code and ad configuration delivered by Oryktos adheres to these foundational rules.
-        </p>
+        <h2 style="font-size:32px; margin:0 0 10px; color:#faf8f5;">The Non-Negotiable Standards</h2>
       </div>
 
       <div class="tenets-grid">
         <div class="tenet-card">
           <div class="tenet-num">RULE_01</div>
           <div class="tenet-title">Sub-500ms Edge TTFB</div>
-          <div class="tenet-desc">Global CDN replication and static pre-rendering ensure your users experience instantaneous responses regardless of their device or location.</div>
+          <div class="tenet-desc">Global CDN replication and static pre-rendering ensure your users experience instantaneous responses regardless of device.</div>
         </div>
 
         <div class="tenet-card">
           <div class="tenet-num">RULE_02</div>
           <div class="tenet-title">100% Server Attribution</div>
-          <div class="tenet-desc">Browser-level pixels are obsolete. We relay conversion signals directly from edge servers via Meta CAPI and Google Tag Manager to bypass ad blockers.</div>
+          <div class="tenet-desc">Browser pixels are obsolete. We relay conversion signals directly from edge servers via Meta CAPI and Google Tag Manager.</div>
         </div>
 
         <div class="tenet-card">
           <div class="tenet-num">RULE_03</div>
           <div class="tenet-title">Zero Middleware Bloat</div>
-          <div class="tenet-desc">We eliminate extraneous dependencies. Clean HTML5 semantics, optimized CSS design tokens, and modular components built for long-term scalability.</div>
+          <div class="tenet-desc">Clean HTML5 semantics, optimized CSS design tokens, and modular components built for long-term scalability.</div>
         </div>
       </div>
     </div>
