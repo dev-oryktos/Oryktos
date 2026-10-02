@@ -157,3 +157,11 @@ footer.site-footer { background-color: var(--pine-deep); color: var(--sand-dim);
   footer.site-footer { padding: 60px 20px 30px; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+.footer-logo-img {
+  height: 38px !important;
+  width: auto !important;
+  max-width: 160px !important;
+  object-fit: contain;
+  display: block;
+}
